@@ -1,0 +1,147 @@
+spriteTypes = {	
+
+	#######
+	# TSR #
+	#######
+
+	SpriteType = {
+	name = "GFX_goal_focus_letter_to_neu_berlin"
+	texturefile = "gfx/interface/goals/TSR/focus_letter_to_neu_berlin.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_letter_to_butterfly_castle"
+	texturefile = "gfx/interface/goals/TSR/focus_letter_to_butterfly_castle.dds"			
+	}
+
+	SpriteType = {
+	name = "GFX_goal_focus_letter_to_johansen_banks"
+	texturefile = "gfx/interface/goals/TSR/focus_letter_to_johansen_banks.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_letter_to_officer_corps"
+	texturefile = "gfx/interface/goals/TSR/focus_letter_to_officer_corps.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_mewman_strategy"
+	texturefile = "gfx/interface/goals/TSR/focus_mewman_strategy.dds"			
+	}
+
+	SpriteType = {
+	name = "GFX_goal_focus_army_like_mewni"
+	texturefile = "gfx/interface/goals/TSR/focus_army_like_mewni.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_financial_report"
+	texturefile = "gfx/interface/goals/TSR/focus_financial_report.dds"			
+	}
+
+	SpriteType = {
+	name = "GFX_goal_focus_not_stonks_icon"
+	texturefile = "gfx/interface/goals/TSR/focus_not_stonks_icon.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_chaos_in_the_creamlin"
+	texturefile = "gfx/interface/goals/TSR/focus_chaos_in_the_creamlin.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_secret_military_meeting"
+	texturefile = "gfx/interface/goals/TSR/focus_secret_military_meeting.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_queen_and_the_people"
+	texturefile = "gfx/interface/goals/TSR/focus_queen_and_the_people.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_light_for_the_people"
+	texturefile = "gfx/interface/goals/TSR/focus_light_for_the_people.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_people_communications"
+	texturefile = "gfx/interface/goals/TSR/focus_people_communications.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_queen_organize"
+	texturefile = "gfx/interface/goals/TSR/focus_queen_organize.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_queen_establish_loyalists"
+	texturefile = "gfx/interface/goals/TSR/focus_queen_establish_loyalists.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_queen_replace_with_mewmans"
+	texturefile = "gfx/interface/goals/TSR/focus_queen_replace_with_mewmans.dds"			
+	}
+
+	SpriteType = {
+	name = "GFX_goal_focus_queen_replace_with_monsters"
+	texturefile = "gfx/interface/goals/TSR/focus_queen_replace_with_monsters.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_queen_monsters_2"
+	texturefile = "gfx/interface/goals/TSR/focus_queen_monsters_2.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_queen_mewmans_2"
+	texturefile = "gfx/interface/goals/TSR/focus_queen_mewmans_2.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_queen_mewmans_march"
+	texturefile = "gfx/interface/goals/TSR/focus_queen_mewmans_march.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_queen_enlighten"
+	texturefile = "gfx/interface/goals/TSR/focus_queen_enlighten.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_queen_purge"
+	texturefile = "gfx/interface/goals/TSR/focus_queen_purge.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_victory_parade"
+	texturefile = "gfx/interface/goals/TSR/focus_victory_parade.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_under_the_jackboot"
+	texturefile = "gfx/interface/goals/TSR/focus_under_the_jackboot.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_patriarch_people"
+	texturefile = "gfx/interface/goals/TSR/focus_patriarch_people.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_recruit_peasantry_lamp"
+	texturefile = "gfx/interface/goals/TSR/focus_recruit_peasantry_lamp.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_break_protests"
+	texturefile = "gfx/interface/goals/TSR/focus_break_protests.dds"			
+	}
+	
+	SpriteType = {
+	name = "GFX_goal_focus_sell_off_artifacts"
+	texturefile = "gfx/interface/goals/TSR/focus_sell_off_artifacts.dds"			
+	}
+
+} ### End Bracket
