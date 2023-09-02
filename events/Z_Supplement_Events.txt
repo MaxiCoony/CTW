@@ -1,0 +1,24 @@
+﻿###########################
+# SUPPLEMENT_EVENT
+###########################
+
+add_namespace = SUPPLEMENT_EVENT
+
+############################################################################################################
+country_event = { # For a counting bug fix for Mewni
+	id = SUPPLEMENT_EVENT.1
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+    hidden = yes
+	
+	immediate = {
+		hidden_effect = {	
+			MEW = {
+				set_technology = {
+					basic_wagon = 1
+				}
+			}
+		}
+	}
+}

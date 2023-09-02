@@ -1,0 +1,266 @@
+﻿add_namespace = GNM_queen_hunting
+add_namespace = GNM_flavor
+
+country_event = {
+	id = GNM_flavor.1
+	title = GNM_flavor.1.t
+	desc = GNM_flavor.1.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = GNM_flavor.1.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = {
+	id = GNM_flavor.2
+	title = GNM_flavor.2.t
+	desc = GNM_flavor.2.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = GNM_flavor.2.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = {
+	id = GNM_queen_hunting.1
+	title = GNM_queen_hunting.1.t
+	desc = GNM_queen_hunting.1.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = GNM_queen_hunting.1.a
+		ai_chance = { factor = 100 }
+		GNM = { country_event = { id = awaits_journal.1 days = 1 } }
+		MYS = { country_event = { id = awaits_journal.1 days = 1 } }
+	}
+}
+
+country_event = {
+	id = GNM_queen_hunting.2
+	title = GNM_queen_hunting.2.t
+	desc = GNM_queen_hunting.2.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = GNM_queen_hunting.2.a
+		ai_chance = { factor = 100 }
+		custom_effect_tooltip = "new_decisions_tooltip"
+		set_country_flag = GNM_kidnapping_2
+		hidden_effect = {
+			activate_mission = GNM_kidnapping_consp_decay
+		}
+	}
+}
+
+country_event = {
+	id = GNM_queen_hunting.3
+	title = GNM_queen_hunting.3.t
+	desc = GNM_queen_hunting.3.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = GNM_queen_hunting.3.a
+		ai_chance = { factor = 100 }
+		set_country_flag = GNM_kidnapping_2
+		custom_effect_tooltip = "new_decisions_tooltip"
+		hidden_effect = {
+			activate_mission = GNM_kidnapping_consp_decay
+		}
+	}
+}
+
+country_event = {
+	id = GNM_queen_hunting.4
+	title = GNM_queen_hunting.4.t
+	desc = GNM_queen_hunting.4.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = GNM_queen_hunting.4.a
+		ai_chance = { factor = 100 }
+		set_country_flag = GNM_kidnapping_2
+		custom_effect_tooltip = "new_decisions_tooltip"
+		hidden_effect = {
+			activate_mission = GNM_kidnapping_consp_decay
+		}
+	}
+}
+
+country_event = {
+	id = GNM_queen_hunting.5
+	title = {
+		text = GNM_queen_hunting.5.t.1
+		trigger = {
+			has_completed_focus = GNM_operation_everything_nice
+		}
+	}
+	title = {
+		text = GNM_queen_hunting.5.t.2
+		trigger = {
+			has_completed_focus = GNM_operation_northern_dream
+		}
+	}
+	desc = {
+		text = GNM_queen_hunting.5.d.1
+		trigger = {
+			has_completed_focus = GNM_operation_everything_nice
+		}
+	}
+	desc = {
+		text = GNM_queen_hunting.5.d.2
+		trigger = {
+			has_completed_focus = GNM_operation_northern_dream
+		}
+	}
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = GNM_queen_hunting.5.a.1
+		ai_chance = { factor = 100 }
+		trigger = {
+			has_completed_focus = GNM_operation_everything_nice
+		}
+		country_event = { id = GNM_queen_hunting.6 days = 1 }
+
+	}
+	
+	option = {
+		name = GNM_queen_hunting.5.a.2
+		ai_chance = { factor = 100 }
+		trigger = {
+			has_completed_focus = GNM_operation_northern_dream
+		}
+		country_event = { id = GNM_queen_hunting.6 days = 1 }
+
+	}
+	
+}
+
+country_event = {
+	id = GNM_queen_hunting.6
+	title = {
+		text = GNM_queen_hunting.6.t.1
+		trigger = {
+			has_completed_focus = GNM_operation_everything_nice
+		}
+	}
+	title = {
+		text = GNM_queen_hunting.6.t.2
+		trigger = {
+			has_completed_focus = GNM_operation_northern_dream
+		}
+	}
+	desc = {
+		text = GNM_queen_hunting.6.d.1
+		trigger = {
+			has_completed_focus = GNM_operation_everything_nice
+		}
+	}
+	desc = {
+		text = GNM_queen_hunting.6.d.2
+		trigger = {
+			has_completed_focus = GNM_operation_northern_dream
+		}
+	}
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = GNM_queen_hunting.6.a
+		ai_chance = { factor = 100 }
+		trigger = {
+			has_completed_focus = GNM_operation_everything_nice
+		}
+		set_global_flag = candy_gnome_kidnapped
+		mark_focus_tree_layout_dirty = yes
+		recruit_character = GNM_candy
+		add_country_leader_role = {
+			character = GNM_candy
+			promote_leader = yes
+			country_leader = {
+				ideology = fascism_ideology
+				expire = "2040.1.1.1"
+				traits = { GNM_ruthless_queen }
+			}
+		}
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+			long_name = GNM_fascism_candy_party
+			name = GNM_fascism_candy_party
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.65
+		}
+		custom_effect_tooltip = generic_focus_tree_unlock_tooltip
+		clr_country_flag = GNM_kidnapping_2
+		remove_mission = GNM_kidnapping_consp_decay
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = GLOBAL.forest_countries
+					value = THIS.id
+				}
+			}
+			news_event = { id = FOREST_gnome_candy.1 days = 1 }
+		}
+	}
+	
+	option = {
+		name = GNM_queen_hunting.6.b
+		ai_chance = { factor = 100 }
+		trigger = {
+			has_completed_focus = GNM_operation_northern_dream
+		}
+		set_global_flag = pacifica_gnome_kidnapped
+		mark_focus_tree_layout_dirty = yes
+		recruit_character = GNM_pacifica
+		add_country_leader_role = {
+			character = GNM_pacifica
+			promote_leader = yes
+			country_leader = {
+				ideology = oligarchism
+				expire = "2040.1.1.1"
+				traits = { captain_of_industry GNM_CEO }
+			}
+		}
+		set_politics = {
+			ruling_party = neutrality
+			elections_allowed = no
+			long_name = GNM_neutrality_pacifica_party
+			name = GNM_neutrality_pacifica_party
+		}
+		clr_country_flag = GNM_kidnapping_2
+		remove_mission = GNM_kidnapping_consp_decay
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = GLOBAL.forest_countries
+					value = THIS.id
+				}
+			}
+			news_event = { id = FOREST_gnome_pacifica.1 days = 1 }
+		}
+	}
+	
+}

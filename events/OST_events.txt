@@ -1,0 +1,68 @@
+﻿add_namespace = ost_pigeon
+add_namespace = ost_rejected
+add_namespace = ost_war
+
+country_event = {
+	id = ost_pigeon.1
+	title = ost_pigeon.1.t
+	desc = ost_pigeon.1.d
+	picture = GFX_report_event_weak_dipper
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ost_pigeon.1.a
+		set_autonomy = {
+	target = PIG
+	autonomy_state = autonomy_personal_union
+}
+PIG = {add_stability = 0.05
+}
+
+|
+		ai_chance = { factor = 100 }
+	}
+	
+	option = {
+		name = ost_pigeon.1.b
+		
+		OST = {
+
+		 annex_country = { target = PIG transfer_troops = yes }
+		}
+		
+		
+		
+		hidden_effect = {
+		OST = {
+		 OST = { country_event = { id = ost_pigeon.2 } }
+		 
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+
+######################
+######################
+
+country_event = {
+	id = ost_rejected.1
+	title = ost_rejected.1.t
+	desc = ost_rejected.1.d
+	picture = GFX_report_event_weak_dipper
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ost_pigeon.2.a
+		
+	
+declare_war_on = { type = annex_everything    target = PIG }
+		ai_chance = { factor = 100 }
+	}
+}
+
+		
+	
+	
+	

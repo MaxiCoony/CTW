@@ -1,0 +1,446 @@
+﻿add_namespace = UNI_intervention
+add_namespace = UNI_intervention_confirmation
+add_namespace = UNI_multi_mano_war_check
+add_namespace = UNI_north_anarchy
+add_namespace = UNI_test
+
+###########################################################################
+#IF YOU CAN FIGURE OUT HOW TO GET THESE AI MODIFIERS TO WORK, PLEASE DO IT#
+###########################################################################
+
+country_event = {
+	id = UNI_intervention.1
+	title = UNI_intervention.1.t
+	desc = UNI_intervention.1.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UNI_intervention.1.a
+		ai_chance = { factor = 100 }
+		set_country_flag = UNI_yes_intervene
+		custom_effect_tooltip = "generic_decision_unlock_tooltip"
+	}
+	option = {
+		name = UNI_intervention.1.b
+		ai_chance = { factor = 100 }
+		add_ideas = UNI_hands_off_observation
+	}
+}
+
+country_event = {
+	id = UNI_intervention.2
+	title = UNI_intervention.2.t
+	desc = UNI_intervention.2.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UNI_intervention.2.a
+		ai_chance = {
+			factor = 4
+			#modifier = {
+			#	factor = 0
+			#	has_manpower > 500
+			#}
+		}
+		add_manpower = 1500
+		UNI = { country_event = UNI_intervention_confirmation.1 }
+		if = {
+			limit = {
+				tag = MAN
+			}
+			UNI = {
+				add_to_variable = {
+					var = UNI_MAN_influence
+					value = 5
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				tag = UFC
+			}
+			UNI = {
+				add_to_variable = {
+					var = UNI_UFC_influence
+					value = 5
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = UNI_intervention.2.b
+		ai_chance = { factor = 1 }
+		UNI = { country_event = UNI_intervention_confirmation.2 }
+	}
+
+}
+
+country_event = {
+	id = UNI_intervention_confirmation.1
+	title = UNI_intervention_confirmation.1.t
+	desc = UNI_intervention_confirmation.1.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UNI_intervention_confirmation.1.a
+		ai_chance = {
+			factor = 1
+		}
+		clr_country_flag = UNI_influence_dec_block
+	}
+}
+
+country_event = {
+	id = UNI_intervention_confirmation.2
+	title = UNI_intervention_confirmation.2.t
+	desc = UNI_intervention_confirmation.2.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UNI_intervention_confirmation.2.a
+		ai_chance = {
+			factor = 1
+		}
+		clr_country_flag = UNI_influence_dec_block
+	}
+}
+
+country_event = {
+	id = UNI_intervention_confirmation.3 #war
+	title = UNI_intervention_confirmation.3.t
+	desc = UNI_intervention_confirmation.3.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UNI_intervention_confirmation.3.a
+		ai_chance = {
+			factor = 1
+		}
+		clr_country_flag = UNI_influence_dec_block
+		complete_national_focus = UNI_threat_from_north
+	}
+}
+
+country_event = {
+	id = UNI_intervention_confirmation.4 #failed to influence
+	title = UNI_intervention_confirmation.4.t
+	desc = UNI_intervention_confirmation.4.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UNI_intervention_confirmation.4.a
+		ai_chance = {
+			factor = 1
+		}
+		clr_country_flag = UNI_influence_dec_block
+		complete_national_focus = UNI_threat_from_north
+	}
+}
+
+country_event = {
+	id = UNI_intervention.3
+	title = UNI_intervention.3.t
+	desc = UNI_intervention.3.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UNI_intervention.2.a
+		ai_chance = {
+			factor = 0
+			#modifier = {
+			#	factor = 4
+			#	has_equipment = { infantry_equipment < 500 }
+			#}
+		}
+		UNI = {
+			send_equipment = {
+				equipment = infantry_equipment
+				amount = 250
+				target = PREV
+			}
+			country_event = UNI_intervention_confirmation.1
+		}
+		if = {
+			limit = {
+				tag = MAN
+			}
+			UNI = {
+				add_to_variable = {
+					var = UNI_MAN_influence
+					value = 5
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				tag = UFC
+			}
+			UNI = {
+				add_to_variable = {
+					var = UNI_UFC_influence
+					value = 5
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = UNI_intervention.2.b
+		ai_chance = { factor = 1 }
+		UNI = { country_event = UNI_intervention_confirmation.2 }
+		
+	}
+
+}
+
+country_event = {
+	id = UNI_intervention.4
+	title = UNI_intervention.4.t
+	desc = UNI_intervention.4.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UNI_intervention.4.a
+		ai_chance = {
+			factor = 4
+			#modifier = {
+			#	factor = 0
+			#	surrender_progress > 0.8
+			#}
+		}
+		add_timed_idea = {
+			idea = UNI_support_mil
+			days = 180
+		}
+		UNI = {
+			country_event = UNI_intervention_confirmation.1
+		}
+		if = {
+			limit = {
+				tag = MAN
+			}
+			UNI = {
+				add_to_variable = {
+					var = UNI_MAN_influence
+					value = 10
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				tag = UFC
+			}
+			UNI = {
+				add_to_variable = {
+					var = UNI_UFC_influence
+					value = 10
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = UNI_intervention.2.b
+		ai_chance = { factor = 1 }
+		UNI = { country_event = UNI_intervention_confirmation.2 }
+		
+	}
+
+}
+
+country_event = {
+	id = UNI_intervention.5
+	title = UNI_intervention.5.t
+	desc = UNI_intervention.5.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UNI_intervention.5.a
+		ai_chance = {
+			factor = 1
+		}
+		UNI = {
+			puppet = PREV
+			country_event = { id = UNI_intervention_confirmation.2 days = 1 }
+		}
+	}
+	
+	option = {
+		name = UNI_intervention.2.b
+		ai_chance = { factor = 1 }
+		UNI = { country_event = { id = UNI_intervention_confirmation.3 days = 1 } }
+		add_ideas = FOREST_ripped_from_unicorn_reliance
+	}
+
+}
+
+country_event = {
+	id = UNI_multi_mano_war_check.1
+	title = UNI_multi_mano_war_check.1.t
+	desc = UNI_multi_mano_war_check.1.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		IF = {
+			limit = {
+				AND = {
+					FROM = MAN #Sender is man
+					check_variable = { UNI_MAN_influence > 99 }
+				}
+			}
+			complete_national_focus = UNI_the_north_pacified
+			complete_national_focus = UNI_manotaurs_under_hoof
+		}
+		ELSE_IF = {
+			limit = {
+				AND = {
+					FROM = UFC #Sender is ufc
+					check_variable = { UNI_UFC_influence > 99 }
+				}
+			}
+			complete_national_focus = UNI_the_north_pacified
+			complete_national_focus = UNI_multis_under_hoof
+		}
+		ELSE = {
+			complete_national_focus = UNI_threat_from_north
+		}
+	}
+	
+	option = {
+		name = UNI_multi_mano_war_check.1.a
+		ai_chance = {
+			factor = 1
+		}
+		
+	}
+
+}
+
+country_event = {
+	id = UNI_north_anarchy.1
+	title = UNI_north_anarchy.1.t
+	desc = UNI_north_anarchy.1.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UNI_north_anarchy.1.a
+		ai_chance = {
+			factor = 1
+		}
+		complete_national_focus = UNI_rumors
+	}
+}
+
+country_event = {
+	id = UNI_north_anarchy.2
+	title = UNI_north_anarchy.2.t
+	desc = UNI_north_anarchy.2.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UNI_north_anarchy.2.a
+		ai_chance = {
+			factor = 1
+		}
+		complete_national_focus = UNI_just_leave_it_be
+	}
+	
+	option = {
+		name = UNI_north_anarchy.2.b
+		ai_chance = {
+			factor = 1
+		}
+		complete_national_focus = UNI_restore_order
+		IF = {
+			limit = {
+				country_exists = MAN
+			}
+			declare_war_on = {
+				target = MAN
+				type = annex_everything
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				country_exists = UFC
+			}
+			declare_war_on = {
+				target = UFC
+				type = annex_everything
+			}
+		}
+	}
+}
+
+country_event = {
+	id = UNI_test.1
+	title = UNI_test.1.t
+	desc = UNI_test.1.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UNI_test.1.a
+		ai_chance = { factor = 100 }
+		set_country_flag = UNI_yes_intervene
+		45 = {
+			add_building_construction = {
+				type = bunker
+				level = 8
+				instant_build = yes
+				province = {
+					all_provinces = yes
+					limit_to_border = yes
+					}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = UNI_test.2
+	title = UNI_test.2.t
+	desc = UNI_test.2.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UNI_test.2.a
+		ai_chance = { factor = 100 }
+		set_variable = {
+			var = UNI_MAN_influence
+			value = 1000
+		}
+		set_variable = {
+			var = UNI_UFC_influence
+			value = 1000
+		}
+	}
+}

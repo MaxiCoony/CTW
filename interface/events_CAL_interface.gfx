@@ -1,0 +1,100 @@
+##########
+# CAL country event and decisions picture interface
+############
+spriteTypes = {
+
+	spriteType = { # 
+		name = "GFX_report_event_california_flag"
+		texturefile = "gfx/event_country_pictures/CAL/report_event_california_flag.dds"
+	}
+	spriteType = { # 
+		name = "GFX_report_event_gustav"
+		texturefile = "gfx/event_country_pictures/CAL/report_event_gustav.dds"
+	}
+	spriteType = { # 
+		name = "GFX_report_event_bakersfieldville"
+		texturefile = "gfx/event_country_pictures/CAL/report_event_bakersfieldville.dds"
+	}
+	spriteType = { #  
+		name = "GFX_report_event_bakersfieldville_happy"
+		texturefile = "gfx/event_country_pictures/CAL/report_event_bakersfieldville_happy.dds"
+	}
+	spriteType = { # 
+		name = "GFX_report_event_star_uninpressed"
+		texturefile = "gfx/event_country_pictures/CAL/report_event_star_uninpressed.dds"
+	}
+	spriteType = { # 
+		name = "GFX_report_event_star_spying"
+		texturefile = "gfx/event_country_pictures/CAL/report_event_star_spying.dds"
+	}
+	spriteType = { # 
+		name = "GFX_report_event_janna_marco_info"
+		texturefile = "gfx/event_country_pictures/CAL/report_event_janna_marco_info.dds"
+	}
+	spriteType = { # 
+		name = "GFX_report_event_janna_cult"
+		texturefile = "gfx/event_country_pictures/CAL/report_event_janna_death_cult_1.dds" 
+	}
+	spriteType = { # 
+		name = "GFX_report_event_witcher"
+		texturefile = "gfx/event_country_pictures/CAL/report_event_witcher.dds" 
+	}
+	spriteType = { # 
+		name = "GFX_report_event_pol_lit"
+		texturefile = "gfx/event_country_pictures/ALL/report_event_pol_lit.dds" 
+	}
+	
+	
+   #############################################################
+   #  Special GIF Evenrt image
+   #############################################################
+	
+	#spriteType = { # gif test
+	#	name = "GFX_report_event_pine_or_star"
+	#	texturefile = "gfx/event_country_pictures/MYS/pine-or-star.dds"
+	#}
+	
+	#frameAnimatedSpriteType = {	#usual stuff
+    #	name = "GFX_report_event_pine_or_star"
+    #	texturefile = "gfx/event_country_pictures/MYS/pine-or-star.dds"
+	#	
+    #	noOfFrames = 17  	#total frames, must be exact or errors occures
+    #	loadType = "INGAME"
+    #	transparencecheck = no
+    #	animation_rate_fps = 4  #frames per second, so if gif is several seconds, divide total frames accordingly 
+    #	looping = yes
+    #	play_on_show = yes
+    #	pause_on_loop = 0.0
+	#}
+
+
+   #############################################################
+   #  Decisions
+   #############################################################
+	spriteType = { # descions norcal socaldivision
+		name = "GFX_decision_category_nor_so_division"
+		texturefile = "gfx/interface/decisions/decision_cat_norcal_socal.dds"
+	}
+	spriteType = { # descions roads
+		name = "GFX_decision_category_roads"
+		texturefile = "gfx/interface/decisions/decision_cat_roads.dds"
+	}
+	spriteType = { # descions everett
+		name = "GFX_decision_category_everett_expansion"
+		texturefile = "gfx/interface/decisions/decision_cat_everett.dds"
+	}
+	spriteType = { # descions everett
+		name = "GFX_decision_category_pacific_fleet"
+		texturefile = "gfx/interface/decisions/decision_cat_pacific_fleet.dds"
+	}
+	spriteType = { # descions everett
+		name = "GFX_decision_category_sierra_depot"
+		texturefile = "gfx/interface/decisions/decision_cat_sierra_depot.dds"
+	}
+	
+	
+	
+	
+	
+	
+} #end of file

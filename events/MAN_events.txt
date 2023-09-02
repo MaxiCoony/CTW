@@ -1,0 +1,264 @@
+﻿add_namespace = MAN_START_EVENT
+add_namespace = MAN_MANWAR 
+add_namespace = MAN_MANWAR_gnome
+add_namespace = MAN_LEADERAUR_EVENT
+
+country_event = {
+	id = MAN_START_EVENT.1
+	title = MAN_START_EVENT.1.t
+	desc = MAN_START_EVENT.1.d
+	picture = GFX_report_event_weak_dipper
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = MAN_START_EVENT.1.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+############################################
+
+country_event = { # Womantaur's approval
+	id = MAN_MANWAR.1
+	title = MAN_MANWAR.1.t
+	desc = MAN_MANWAR.1.d
+	picture = GFX_report_event_weak_dipper
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = MAN_MANWAR.1.a
+		add_command_power = 100
+		add_war_support = 0.2
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # Hand Witch Alliance
+	id = MAN_MANWAR.2
+	title = MAN_MANWAR.2.t
+	desc = MAN_MANWAR.2.d
+	picture = GFX_report_event_weak_dipper
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = MAN_MANWAR.2.a
+		add_equipment_to_stockpile = {
+			type = ind_infantry_equipment_2
+			amount = 1000
+			producer = CRL
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 1000
+			producer = CRL
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # Gnome proposal
+	id = MAN_MANWAR.3
+	title = MAN_MANWAR.3.t
+	desc = MAN_MANWAR.3.d
+	picture = GFX_report_event_weak_dipper
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = MAN_MANWAR.3.a
+		GNM = { country_event = { id = MAN_MANWAR.4 days = 5 } }
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # Gnome get proposal
+	id = MAN_MANWAR.4
+	title = MAN_MANWAR.4.t
+	desc = MAN_MANWAR.4.d
+	picture = GFX_report_event_weak_dipper
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = MAN_MANWAR.4.a
+		MAN = { country_event = { id = MAN_MANWAR.5 days = 5 } }
+		ai_chance = { factor = 70 }
+	}
+	option = {
+		name = MAN_MANWAR.4.b
+		MAN = { country_event = { id = MAN_MANWAR.6 days = 5 } }
+		ai_chance = { factor = 30 }
+	}
+}
+
+country_event = { # Gnome said yes
+	id = MAN_MANWAR.5
+	title = MAN_MANWAR.5.t
+	desc = MAN_MANWAR.5.d
+	picture = GFX_report_event_weak_dipper
+	
+	is_triggered_only = yes
+	
+	immediate = { 49 = { set_demilitarized_zone = no } }
+	
+	option = {
+		name = MAN_MANWAR.5.a
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_in_array = {
+						array = GLOBAL.forest_countries
+						value = THIS.id
+					}
+				}
+				news_event = { id = FOREST_man_vs_ufc.1 days = 1 }
+			}
+			start_border_war = {
+				change_state_after_war = no
+				attacker = { 
+					state = 41 num_provinces = 2 
+					on_win = MAN_MANWAR_gnome.1 
+					on_lose = MAN_MANWAR_gnome.2 
+				}			
+				defender = { 
+					state = 49 num_provinces = 2 
+					on_win = MAN_MANWAR_gnome.3 
+					on_lose = MAN_MANWAR_gnome.4 
+				}
+			}
+			set_border_war_data = { attacker_modifier = 25 combat_width = 8 }
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # Gnome said no
+	id = MAN_MANWAR.6
+	title = MAN_MANWAR.6.t
+	desc = MAN_MANWAR.6.d
+	picture = GFX_report_event_weak_dipper
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = MAN_MANWAR.6.a
+		add_opinion_modifier = {
+			target = GNM
+			modifier = MAN_weak_gnome
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+
+############################################
+
+country_event = { # Gnome won
+	id = MAN_MANWAR_gnome.1 
+	title = MAN_MANWAR_gnome.1.t
+	desc = MAN_MANWAR_gnome.1.d 
+	is_triggered_only = yes
+	immediate = { GNM = { transfer_state = 49 } add_political_power = 200 } 	
+	option = { name = MAN_MANWAR_gnome.1.a ai_chance = { factor = 100 } }
+}
+
+country_event = { # Gnome lost
+	id = MAN_MANWAR_gnome.2 
+	title = MAN_MANWAR_gnome.2.t
+	desc = MAN_MANWAR_gnome.2.d 
+	is_triggered_only = yes
+	immediate = { add_political_power = -100 } } 	
+	option = { name = MAN_MANWAR_gnome.2.a ai_chance = { factor = 100 } }
+}
+
+country_event = { # Bears lost
+	id = MAN_MANWAR_gnome.3 
+	title = MAN_MANWAR_gnome.3.t
+	desc = MAN_MANWAR_gnome.3.d 
+	is_triggered_only = yes
+	immediate = { add_political_power = -50 } } 	
+	option = { name = MAN_MANWAR_gnome.3.a ai_chance = { factor = 100 } }
+}
+
+country_event = { # Bears won!
+	id = MAN_MANWAR_gnome.4 
+	title = MAN_MANWAR_gnome.4.t
+	desc = MAN_MANWAR_gnome.4.d 
+	is_triggered_only = yes
+	immediate = { add_political_power = 200 } } 	
+	option = { name = MAN_MANWAR_gnome.4.a ai_chance = { factor = 100 } }
+}
+
+############################################
+############################################
+
+country_event = { # Refugee Crisis
+	id = MAN_LEADERAUR_EVENT.1
+	title = MAN_LEADERAUR_EVENT.1.t
+	desc = MAN_LEADERAUR_EVENT.1.d
+	picture = GFX_report_event_weak_dipper
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = MAN_LEADERAUR_EVENT.1.a
+		add_stability = -0.10
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # The Great Duel
+	id = MAN_LEADERAUR_EVENT.2
+	title = MAN_LEADERAUR_EVENT.2.t
+	desc = MAN_LEADERAUR_EVENT.2.d
+	picture = GFX_report_event_weak_dipper
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = MAN_LEADERAUR_EVENT.2.a
+		set_politics = {
+				ruling_party = democratic
+				elections_allowed = no
+		}
+		add_popularity = { ideology = democratic popularity = 0.50 }
+		add_stability = 0.15
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # Bro-Taur Meet
+	id = MAN_LEADERAUR_EVENT.3
+	title = MAN_LEADERAUR_EVENT.3.t
+	desc = MAN_LEADERAUR_EVENT.3.d
+	picture = GFX_report_event_weak_dipper
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = MAN_LEADERAUR_EVENT.3.a
+		add_command_power = 20
+		add_political_power = 100
+		add_popularity = { ideology = neutrality popularity = 0.10 }
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # Bro-Taur take over
+	id = MAN_LEADERAUR_EVENT.4
+	title = MAN_LEADERAUR_EVENT.4.t
+	desc = MAN_LEADERAUR_EVENT.4.d
+	picture = GFX_report_event_weak_dipper
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = MAN_LEADERAUR_EVENT.4.a
+		add_command_power = 20
+		add_political_power = 100
+		add_popularity = { ideology = neutrality popularity = 0.10 }
+		ai_chance = { factor = 100 }
+	}
+}

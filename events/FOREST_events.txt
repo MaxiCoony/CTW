@@ -1,0 +1,691 @@
+﻿# Combine FOREST OF GF events
+add_namespace = FOREST_border_wars
+add_namespace = FOREST_wars
+add_namespace = FOREST_crawlspace_trigger
+add_namespace = FOREST_anarchy
+add_namespace = FOREST_balance
+add_namespace = FOREST_dipper_kill_man
+add_namespace = FOREST_dipper_kill_multi
+
+country_event = { # Trigger Starting Man War Border War
+	id = FOREST_border_wars.1 
+	title = FOREST_border_wars.1.t
+	desc = FOREST_border_wars.1.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+		MAN = {
+			# Central Crossing
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 50
+					num_provinces = 3
+
+				}
+							
+				defender = {
+					state = 46
+					num_provinces = 3
+					on_win = FOREST_border_wars.3
+
+				}
+			}
+			set_border_war_data = {
+				attacker = 50
+				defender = 46
+				#defender_modifier = 2
+				combat_width = 10
+			}
+			
+			# Trembley Rapids
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 51
+					num_provinces = 3
+				}						
+				defender = {
+					state = 508
+					num_provinces = 3
+					#on_win = japan_border_conflict.3
+					#on_lose = japan_border_conflict.2
+					#on_cancel = japan_border_conflict.4
+				}
+			}
+			set_border_war_data = {
+				attacker = 51
+				defender = 508
+				#defender_modifier = 2
+				combat_width = 10
+			}
+		}
+		
+	}
+	option = {
+		name = FOREST_border_wars.1.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # If Bear counter attack wins
+	id = FOREST_border_wars.2
+	title = FOREST_border_wars.2.t
+	desc = FOREST_border_wars.2.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes hidden = yes
+	
+	immediate = {
+		UFC = {transfer_state = 509	} 
+	}
+	option = { ai_chance = { factor = 100 } }
+}
+country_event = { # Bear defends Crossing
+	id = FOREST_border_wars.3
+	title = FOREST_border_wars.3.t
+	desc = FOREST_border_wars.3.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes hidden = yes
+	
+	immediate = {
+		49 = { set_demilitarized_zone = no }
+		
+	}
+	option = { ai_chance = { factor = 100 } }
+}
+country_event = { # Border Slopes Border war win
+	id = FOREST_border_wars.4
+	title = FOREST_border_wars.4.t
+	desc = FOREST_border_wars.4.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes hidden = yes
+	
+	immediate = {
+		UFC = {transfer_state = 522	}
+	}
+	option = { ai_chance = { factor = 100 } }
+}
+country_event = { # Retake Crossing Border war win
+	id = FOREST_border_wars.5
+	title = FOREST_border_wars.5.t
+	desc = FOREST_border_wars.5.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes hidden = yes
+	
+	immediate = {
+		UFC = {transfer_state = 46	}
+	}
+	option = { ai_chance = { factor = 100 } }
+}
+country_event = { # MANOTAURs, Retake Crossing 2nd Border war win
+	id = FOREST_border_wars.6
+	title = FOREST_border_wars.6.t
+	desc = FOREST_border_wars.6.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes hidden = yes
+	
+	immediate = {
+		MAN = {transfer_state = 46	}
+	}
+	option = { ai_chance = { factor = 100 } }
+}
+############################################################
+############################################################
+
+country_event = { #Winning the War
+	id = FOREST_wars.1
+	title = FOREST_wars.1.t
+	desc = {
+		text = FOREST_wars.1.d_bears
+		trigger = { tag = UFC }
+	}
+	desc = {
+		text = FOREST_wars.1.d_manot
+		trigger = { tag = MAN }
+	}
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	fire_only_once = yes  
+	
+	immediate = {
+		IF = { limit = { tag = UFC } # The Multi-Bears Win
+			white_peace = { tag = MAN message = FOREST_wars.1.a }
+			UNI = { country_event = { id = UNI_multi_mano_war_check.1 days = 1 } }
+			transfer_state = 46
+			transfer_state = 48
+			transfer_state = 50
+			transfer_state = 51
+			transfer_state = 53
+			transfer_state = 508
+			transfer_state = 509
+			add_state_core = 46
+			add_state_core = 48
+			add_state_core = 50
+			add_state_core = 51
+			add_state_core = 53
+			add_state_core = 508
+			add_state_core = 509
+			UFC = {complete_national_focus = UFC_bear_victory}
+		}
+		ELSE_IF = { limit = { tag = MAN } # The Manotaurs Win
+			white_peace = { tag = UFC message = FOREST_wars.1.b }
+			UNI = { country_event = { id = UNI_multi_mano_war_check.1 days = 1 } }
+			transfer_state = 46
+			transfer_state = 48
+			transfer_state = 50
+			transfer_state = 51
+			transfer_state = 508
+			transfer_state = 509
+			add_state_core = 46
+			add_state_core = 48
+			add_state_core = 50
+			add_state_core = 51
+			add_state_core = 508
+			add_state_core = 509
+			IF = {
+				limit = {
+					49 = {
+						OR = {
+							is_owned_by = MAN
+							is_owned_by = UFC
+						}
+					}
+				}
+				transfer_state = 49
+				add_state_core = 49
+			}
+			MAN = {complete_national_focus = MAN_manly_victory}
+		}
+	}
+	option = {
+		name = FOREST_wars.1.c
+		ai_chance = { factor = 100 }
+		
+	}
+}
+
+country_event = { #Losing the War
+	id = FOREST_wars.2 
+	title = FOREST_wars.2.t
+	desc = {
+		text = FOREST_wars.2.d_bears
+		trigger = { tag = UFC }
+	}
+	desc = {
+		text = FOREST_wars.2.d_manot
+		trigger = { tag = MAN }
+	}
+	picture = GFX_report_event_empty 
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		IF = { limit = { tag = UFC }
+			add_political_power = -100
+			UFC = { complete_national_focus = UFC_manotaur_victory }
+		}
+		ELSE_IF = { limit = { tag = MAN }
+			add_political_power = -100
+			MAN = { complete_national_focus = MAN_emasculating_defeat }
+		}
+	}
+	option = {
+		name = FOREST_wars.2.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+################################################################
+############################################################
+
+country_event = { # Open Crawlspace Market
+	id = FOREST_crawlspace_trigger.1
+	title = FOREST_crawlspace_trigger.1.t
+	desc = FOREST_crawlspace_trigger.1.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = GLOBAL_FLAG_MARKET
+	}
+	option = { name = FOREST_crawlspace_trigger.1.a ai_chance = { factor = 100 } }
+}
+
+############################################################
+############################################################
+
+country_event = {
+	id = FOREST_anarchy.1
+	title = FOREST_anarchy.1.t
+	desc = {
+		text = FOREST_anarchy.1
+	}
+
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = FOREST_anarchy.1.a
+		ai_chance = { factor = 100 }
+		hidden_effect = {
+			IF = {
+				limit = {
+					tag = MAN
+				}
+				annex_country = {
+					target = UFC
+					transfer_troops = no
+				}
+			}
+			ELSE_IF = {
+				limit = {
+					tag = UFC
+				}
+				annex_country = {
+					target = MAN
+					transfer_troops = no
+				}
+				every_possible_country = {
+					limit = { has_character = MAN_womantaur }
+					random_character = {
+						limit = { is_character = MAN_womantaur }
+						set_nationality = UFC
+					}
+				}
+			}
+			set_cosmetic_tag = FOREST_ANARCHY
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+			set_political_party = {
+				ideology = communism
+				popularity = 100
+			}
+			country_event = { id = FOREST_anarchy.2 days = 14 }
+			UNI = { country_event = { id = UNI_north_anarchy.2 days = 7 } }
+		}
+	}
+	option = {
+		name = FOREST_anarchy.1.b
+		ai_chance = { factor = 100 }
+		UNI = {
+			complete_national_focus = UNI_anarchy_avoided
+		}
+	}
+}
+
+country_event = {
+	id = FOREST_anarchy.2
+	title = FOREST_anarchy.2.t
+	desc = {
+		text = FOREST_anarchy.2
+	}
+
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = FOREST_anarchy.1.a
+		ai_chance = { factor = 100 }
+		add_country_leader_role = {
+			character = MAN_womantaur
+			promote_leader = yes
+			country_leader = {
+				ideology = fascism_ideology
+				expire = "2040.1.1.1"
+				traits = { MAN_uniter }
+			}
+		}
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+			long_name = MAN_fascism_womantaur_party
+			name = MAN_fascism_womantaur_party
+		}
+		set_political_party = {
+			ideology = fascism
+			popularity = 100
+		}
+	}
+	
+	option = {
+		name = FOREST_anarchy.2.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # Balance check
+	id = FOREST_balance.1
+	title = FOREST_balance.1.t
+	desc = FOREST_balance.1.d
+	picture = GFX_report_event_empty
+	
+	hidden = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = FOREST_balance.1.a
+		ai_chance = { factor = 100 }
+		IF = {
+			limit = {
+				OR = {
+					MAN = { has_war = no }
+					UFC = { has_war = no }
+				}
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				AND = {
+					MAN = { is_ai = no }
+					UFC = { is_ai = no }
+				}
+			}
+			random_list = {
+				50 = {
+					MAN = {
+						country_event = {
+							id = FOREST_balance.2
+							days = 1
+						}
+					}
+				}
+				50 = {
+					UFC = {
+						country_event = {
+							id = FOREST_balance.2
+							days = 1
+						}
+					}
+				}
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				MAN = { is_ai = no }
+			}
+			MAN = {
+				country_event = {
+					id = FOREST_balance.2
+					days = 1
+				}
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				UFC = { is_ai = no }
+			}
+			UFC = {
+				country_event = {
+					id = FOREST_balance.2
+					days = 1
+				}
+			}
+		}
+		ELSE = {
+			random_list = {
+				50 = {
+					MAN = {
+						country_event = {
+							id = FOREST_balance.2
+							days = 1
+						}
+					}
+				}
+				50 = {
+					UFC = {
+						country_event = {
+							id = FOREST_balance.2
+							days = 1
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = { # Balance given
+	id = FOREST_balance.2
+	title = FOREST_balance.2.t
+	desc = FOREST_balance.2.d
+	picture = GFX_report_event_empty
+	
+	hidden = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = FOREST_balance.2.a
+		ai_chance = { factor = 100 }
+		add_timed_idea = {
+			idea = FOREST_hidden_buff
+			days = 280
+		}
+		country_event = { id = FOREST_balance.3 days = 280 }
+	}
+}
+
+country_event = { # Anarchy, for balance 
+	id = FOREST_balance.3
+	title = FOREST_balance.3.t
+	desc = FOREST_balance.3.d
+	picture = GFX_report_event_empty
+	
+	hidden = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = FOREST_balance.3.a
+		ai_chance = { factor = 100 }
+			IF = {
+				limit = {
+					tag = MAN
+				}
+				white_peace = {
+					tag = UFC
+					message = forest_anarchy_white_peace_msg
+				}
+				annex_country = {
+					target = UFC
+					transfer_troops = no
+				}
+			}
+			ELSE_IF = {
+				limit = {
+					tag = UFC
+				}
+				white_peace = {
+					tag = MAN
+					message = forest_anarchy_white_peace_msg
+				}
+				annex_country = {
+					target = MAN
+					transfer_troops = no
+				}
+				every_possible_country = {
+					limit = { has_character = MAN_womantaur }
+					random_character = {
+						limit = { is_character = MAN_womantaur }
+						set_nationality = UFC
+					}
+				}
+			}
+			set_cosmetic_tag = FOREST_ANARCHY
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+			set_political_party = {
+				ideology = communism
+				popularity = 100
+			}
+			country_event = { id = FOREST_anarchy.2 days = 14 }
+			UNI = { country_event = { id = UNI_north_anarchy.2 days = 7 } }
+			UNI = { clr_country_flag = UNI_yes_intervene }
+	}
+}
+
+############################
+# For the Mystery Shack
+############################
+
+country_event = { # 
+	id = FOREST_dipper_kill_man.1
+	title = FOREST_dipper_kill_man.1.t
+	desc = FOREST_dipper_kill_man.1.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes 
+	
+	immediate = {}
+	option = {
+		name = FOREST_dipper_kill_man.1.a
+		hidden_effect = {
+			country_event = { id = FOREST_dipper_kill_man.2 days = 30 }
+			UNI = {country_event = { id = UNI_north_anarchy.1 days = 15 }}
+		}
+	}
+}
+country_event = { # 
+	id = FOREST_dipper_kill_man.2
+	title = FOREST_dipper_kill_man.2.t
+	desc = FOREST_dipper_kill_man.2.d
+	picture = GFX_report_event_minotaur_and_dipper
+	
+	is_triggered_only = yes 
+	
+	immediate = {}
+	option = {
+		name = FOREST_dipper_kill_man.2.a
+		hidden_effect = {
+			country_event = { id = FOREST_dipper_kill_man.3 days = 30 }
+		}
+		ai_chance = { factor = 20 }
+	}
+	option = {
+		name = FOREST_dipper_kill_man.2.b
+		hidden_effect = {
+			country_event = { id = FOREST_dipper_kill_man.4 days = 30 }
+		}
+		ai_chance = { factor = 80 }
+	}
+}
+country_event = { # 
+	id = FOREST_dipper_kill_man.3
+	title = FOREST_dipper_kill_man.3.t
+	desc = FOREST_dipper_kill_man.3.d
+	picture = GFX_report_event_minotaur_and_dipper
+	
+	is_triggered_only = yes 
+	
+	immediate = {}
+	option = {
+		name = FOREST_dipper_kill_man.3.a
+		MAN = { country_event = { id = FOREST_anarchy.1 days = 5 } }
+		hidden_effect = {
+		}
+	}
+}
+country_event = { # 
+	id = FOREST_dipper_kill_man.4
+	title = FOREST_dipper_kill_man.4.t
+	desc = FOREST_dipper_kill_man.4.d
+	picture = GFX_report_event_cart_chase
+	
+	is_triggered_only = yes 
+	
+	immediate = {}
+	option = {
+		name = FOREST_dipper_kill_man.4.a
+		hidden_effect = {
+			UNI = { complete_national_focus = UNI_anarchy_avoided }
+		}
+	}
+}
+####################
+country_event = { # 
+	id = FOREST_dipper_kill_multi.1
+	title = FOREST_dipper_kill_multi.1.t
+	desc = FOREST_dipper_kill_multi.1.d
+	picture = GFX_report_event_chutzpar_and_dipper_running
+	
+	is_triggered_only = yes 
+	
+	immediate = {}
+	option = {
+		name = FOREST_dipper_kill_multi.1.a
+		hidden_effect = {
+			country_event = { id = FOREST_dipper_kill_multi.2 days = 30 }
+			UNI = {country_event = { id = UNI_north_anarchy.1 days = 15 }}
+		}
+	}
+}
+country_event = { # 
+	id = FOREST_dipper_kill_multi.2
+	title = FOREST_dipper_kill_multi.2.t
+	desc = FOREST_dipper_kill_multi.2.d
+	picture = GFX_report_event_dipper_on_bear
+	
+	is_triggered_only = yes 
+	
+	immediate = {}
+	option = {
+		name = FOREST_dipper_kill_multi.2.a
+		hidden_effect = {
+			country_event = { id = FOREST_dipper_kill_multi.3 days = 30 }
+		}
+		ai_chance = { factor = 20 }
+	}
+	option = {
+		name = FOREST_dipper_kill_multi.2.b
+		hidden_effect = {
+			country_event = { id = FOREST_dipper_kill_multi.4 days = 30 }
+		}
+		ai_chance = { factor = 80 }
+	}
+}
+country_event = { # Kill Bear
+	id = FOREST_dipper_kill_multi.3
+	title = FOREST_dipper_kill_multi.3.t
+	desc = FOREST_dipper_kill_multi.3.d
+	picture = GFX_report_event_dipper_on_bear
+	
+	is_triggered_only = yes 
+	
+	immediate = {}
+	option = {
+		name = FOREST_dipper_kill_multi.3.a
+		UFC = { country_event = { id = FOREST_anarchy.1 days = 5 } }
+		MYS = {add_timed_idea = {idea = FOREST_dipper_ptsd days = 720} }
+		hidden_effect = { }
+	}
+}
+country_event = { # Spare Bear
+	id = FOREST_dipper_kill_multi.4
+	title = FOREST_dipper_kill_multi.4.t
+	desc = FOREST_dipper_kill_multi.4.d
+	picture = GFX_report_event_dipper_on_bear 
+	
+	is_triggered_only = yes 
+	
+	immediate = {}
+	option = {
+		name = FOREST_dipper_kill_multi.4.a
+		hidden_effect = {
+			UNI = { complete_national_focus = UNI_anarchy_avoided }
+		}
+	}
+}

@@ -1,0 +1,1016 @@
+﻿###########################
+# California
+###########################
+
+add_namespace = CAL_STARTER
+add_namespace = CAL_TREMBLEY
+add_namespace = CAL_ELECTION
+add_namespace = CAL_MILITARY
+add_namespace = CAL_IBI
+add_namespace = CAL_BIB_event
+###
+add_namespace = CAL_CEF
+add_namespace = CAL_CEF_DECLINE
+add_namespace = CAL_FRITZ
+###
+add_namespace = CAL_NWB
+add_namespace = CAL_TEST
+###
+add_namespace = CAL_FORTHEEMPEROR
+
+country_event = {
+	id = CAL_STARTER.1
+	title = CAL_STARTER.1.t
+	desc = CAL_STARTER.1.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { 
+		name = CAL_STARTER.1.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+country_event = {
+	id = CAL_STARTER.2
+	title = CAL_STARTER.2.t
+	desc = CAL_STARTER.2.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = { 
+		name = CAL_STARTER.2.a
+		load_oob = "CAL_2012"
+		SOC = {load_oob = "SOC_2012"}
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+############################################################################################################
+############################################################################################################
+
+country_event = { # What the heck is going on up there? 
+	id = CAL_TREMBLEY.1
+	title = CAL_TREMBLEY.1.t
+	desc = CAL_TREMBLEY.1.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {	
+
+		}
+	}
+	
+	option = { 
+		name = CAL_TREMBLEY.1.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}	
+}
+
+country_event = { # Oregon FPI Standoff
+	id = CAL_TREMBLEY.2
+	title = CAL_TREMBLEY.2.t
+	desc = CAL_TREMBLEY.2.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {	
+
+		}
+	}
+	
+	option = { 
+		name = CAL_TREMBLEY.2.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+		country_event = { id = CAL_ELECTION.2 days = 5}  # Cal Will elect Norton
+	}	
+}
+
+country_event = { # Now, back to where we were...
+	id = CAL_TREMBLEY.3
+	title = CAL_TREMBLEY.3.t
+	desc = CAL_TREMBLEY.3.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {	
+		}
+	}
+	
+	option = { 
+		name = CAL_TREMBLEY.3.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+		country_event = { id = west_election_news.4 days = 4}  # The Western Allaince is formed
+		create_faction = "The Western Alliance"
+		add_to_faction = ORE
+		add_to_faction = WAS
+		add_to_faction = IDH
+		add_to_faction = NEV
+		add_to_faction = ARZ
+	}	
+}
+
+############################################################################################################
+country_event = { # Norton Enters the governor race!
+	id = CAL_ELECTION.1
+	title = CAL_ELECTION.1.t
+	desc = CAL_ELECTION.1.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {	
+		}
+	}
+	
+	option = { 
+		name = CAL_ELECTION.1.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+		country_event = { id = CAL_ELECTION.1 days = 5}
+	}	
+}
+
+country_event = { # California chooses Norton for Governor
+	id = CAL_ELECTION.2
+	title = CAL_ELECTION.2.t
+	desc = CAL_ELECTION.2.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_ELECTION.2.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+		
+		retire_country_leader = yes
+		
+		hidden_effect={
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+			set_politics = {
+				ruling_party = democratic
+			}		
+		}
+		set_party_name = {
+			ideology = democratic
+			name = CAL_democratic_party_norton
+			long_name = CAL_democratic_party_norton
+		}
+		
+		hidden_effect = {  
+			news_event = { id = launcher_news.4 days = 1 } # Launch event to launch world news event for Earth
+			set_cosmetic_tag = IMP_CAL
+			SOC = {set_cosmetic_tag = IMP_CAL_SOC}
+		}
+		create_faction = "Imperial California Republic"
+		add_to_faction = NEV
+	}
+	
+}
+
+country_event = { # California chooses Olson for Governor
+	id = CAL_ELECTION.3
+	title = CAL_ELECTION.3.t
+	desc = CAL_ELECTION.3.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {	
+		}
+	} 
+	
+	option = { 
+		name = CAL_ELECTION.3.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+		
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Travis Olson"
+			desc = "POLITICS_OLSON_DESC"
+			picture = ""
+			ideology = liberalism #conservatism
+		}
+		hidden_effect={
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+			set_politics = {
+				ruling_party = democratic
+			}		
+			news_event = { id = launcher_news.5 days = 1 } # Launch event to launch world news event for Earth
+		}
+		country_event = { id = CAL_TREMBLEY.3 days = 3 }
+	}
+	
+}
+########################################################################################################
+########################################################################################################
+
+country_event = { # Shermie Returns to Service
+	id = CAL_MILITARY.1
+	title = CAL_MILITARY.1.t
+	desc = CAL_MILITARY.1.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_MILITARY.1.a
+		country_event = { id = CAL_MILITARY.6 days = 6}
+	}
+}
+country_event = { # Emily's Marines
+	id = CAL_MILITARY.2
+	title = CAL_MILITARY.2.t
+	desc = CAL_MILITARY.2.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_MILITARY.2.a
+		load_oob = CAL_Emily_Marines
+	}
+}
+country_event = {
+	id = CAL_MILITARY.3 #The Sierra Army Depot 
+	title = CAL_MILITARY.3.t
+	desc = {
+		text = CAL_MILITARY.3.d
+		trigger = { has_dlc = "No Step Back" }
+	}
+	desc = {
+		text = CAL_MILITARY.3.b
+		trigger = { NOT = { has_dlc = "No Step Back" } }
+	}
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {
+	}
+
+	option = {
+		name = CAL_MILITARY.3.a
+		if = {
+			limit = { has_dlc = "No Step Back" }  
+			add_political_power = 10
+			CAL = {	
+				set_technology = { amphibious_tank_chassis = 1 }
+				set_technology = { armor_tech_1 = 1 }
+				set_technology = { armor_tech_2 = 1 }
+				set_technology = { engine_tech_1 = 1 }
+				set_technology = { engine_tech_2 = 1 }
+				set_technology = { basic_light_tank_chassis = 1 }
+				set_technology = { basic_medium_tank_chassis = 1 }
+				set_technology = { basic_heavy_tank_chassis = 1 }
+				add_equipment_to_stockpile = {
+					type = mod_infantry_equipment_1
+					amount = 1000
+					producer = CAL
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 1000
+					producer = EUS
+				}
+			}
+		}
+		else = {
+			CAL = {	
+				add_equipment_to_stockpile = {
+					type = modern_tank_equipment_1
+					amount = 100
+					producer = CAL
+				}
+			}
+		}
+	}
+}
+country_event = { # WHAT HAVE WE LEARNED Focus
+	id = CAL_MILITARY.4
+	title = CAL_MILITARY.4.t
+	desc = CAL_MILITARY.4.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_MILITARY.4.a
+		add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 5
+				category = cat_grand_battle_plan
+		}
+	}
+	option = {
+		name = CAL_MILITARY.4.b
+		add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 5
+				category = cat_mobile_warfare
+		}
+	}
+	option = {
+		name = CAL_MILITARY.4.c
+		add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 5
+				category = cat_superior_firepower
+		}
+	}
+}
+country_event = {
+	id = CAL_MILITARY.5 # Private Security focus
+	title = CAL_MILITARY.5.t
+	desc = CAL_MILITARY.5.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_MILITARY.5.a	
+		add_ideas = CAL_private_security
+	}
+	option = {
+		name = CAL_MILITARY.5.b	
+		add_ideas = CAL_private_security_b
+	}
+	option = {
+		name = CAL_MILITARY.5.c	
+		add_ideas = CAL_private_security_c
+	}
+	option = {
+		name = CAL_MILITARY.5.e	
+		add_political_power = 100
+		add_stability = 0.05
+		add_war_support = -0.05
+	}
+}
+country_event = {
+	id = CAL_MILITARY.6 # Second part to event 1
+	title = CAL_MILITARY.6.t
+	desc = CAL_MILITARY.6.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_MILITARY.6.a	
+		country_event = { id = CAL_MILITARY.7 days = 6}
+	}
+
+}
+
+country_event = {
+	id = CAL_MILITARY.7 # third part to event 1
+	title = CAL_MILITARY.7.t
+	desc = CAL_MILITARY.7.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_MILITARY.7.a	
+		army_experience = 100
+	}
+
+}
+########################################################################################################
+########################################################################################################
+
+country_event = {
+	id = CAL_IBI.0 
+	title = CAL_IBI.0.t
+	desc = CAL_IBI.0.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {
+		
+	}
+
+	option = {
+		name = CAL_IBI.0.a
+		if = {
+			limit = {has_dlc = "La Resistance"}
+			create_intelligence_agency = yes
+			upgrade_intelligence_agency = upgrade_form_department
+		}
+		else = { add_ideas = CAL_no_la_resistance_0}
+	}
+}
+###################################
+country_event = {
+	id = CAL_IBI.1 
+	title = CAL_IBI.1.t
+	desc = CAL_IBI.1.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_IBI.1.a
+	}
+}
+###################################
+country_event = {
+	id = CAL_IBI.2 
+	title = CAL_IBI.2.t
+	desc = CAL_IBI.2.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_IBI.2.a
+	}
+}
+###################################
+country_event = {
+	id = CAL_IBI.3 
+	title = CAL_IBI.3.t
+	desc = CAL_IBI.3.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {} 
+
+	option = {
+		name = CAL_IBI.3.a
+		country_event = CAL_IBI.4
+	}
+}
+country_event = {
+	id = CAL_IBI.4 
+	title = CAL_IBI.4.t
+	desc = CAL_IBI.4.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_IBI.4.a
+		country_event = CAL_IBI.5
+	}
+}
+country_event = {
+	id = CAL_IBI.5 
+	title = CAL_IBI.5.t
+	desc = CAL_IBI.5.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_IBI.5.a
+	}
+}
+###################################
+country_event = {
+	id = CAL_IBI.6 
+	title = CAL_IBI.6.t
+	desc = CAL_IBI.6.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_IBI.6.a
+	}
+}
+###################################
+country_event = {
+	id = CAL_IBI.7 
+	title = CAL_IBI.7.t
+	desc = CAL_IBI.7.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_IBI.7.a
+	}
+}
+###################################
+country_event = {
+	id = CAL_IBI.8 
+	title = CAL_IBI.8.t
+	desc = CAL_IBI.8.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_IBI.8.a
+		country_event = CAL_IBI.9
+	}
+}
+country_event = {
+	id = CAL_IBI.9 
+	title = CAL_IBI.9.t
+	desc = CAL_IBI.9.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_IBI.9.a
+		hidden_effect = {
+			CAL = {}
+			ORE = {}
+		}
+	}
+}
+
+country_event = {
+	id = CAL_IBI.10
+	title = CAL_IBI.10.t
+	desc = CAL_IBI.10.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {
+		ORE = {
+			annex_country = {
+				target = WPI
+				transfer_troops = yes
+			}
+		}
+		92 = {add_core_of = ORE remove_core_of = WPI} 97 = {add_core_of = ORE remove_core_of = WPI} 
+		99 = {add_core_of = ORE remove_core_of = WPI} 91 = {add_core_of = ORE remove_core_of = WPI} 
+		102 = {add_core_of = ORE remove_core_of = WPI} 93 = {add_core_of = ORE remove_core_of = WPI}
+		98 = {add_core_of = ORE remove_core_of = WPI} 95 = {add_core_of = ORE remove_core_of = WPI} 
+		96 = {add_core_of = ORE remove_core_of = WPI} 94 = {add_core_of = ORE remove_core_of = WPI} 
+		87 = {add_core_of = ORE remove_core_of = WPI} 
+	}
+
+	option = {
+		trigger = {tag = CAL}
+		name = CAL_IBI.10.a
+	}
+	option = {
+		trigger = {tag = ORE}
+		name = CAL_IBI.10.b
+	}
+}
+
+###################################
+###################################
+###################################
+
+country_event = {
+	id = CAL_BIB_event.1 
+	title = CAL_BIB_event.1.t
+	desc = CAL_BIB_event.1.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_BIB_event.1.a
+	}
+}
+
+country_event = {
+	id = CAL_BIB_event.2 
+	title = CAL_BIB_event.2.t
+	desc = CAL_BIB_event.2.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_BIB_event.2.a
+	}
+}
+
+country_event = {
+	id = CAL_BIB_event.3 
+	title = CAL_BIB_event.3.t
+	desc = CAL_BIB_event.3.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {}
+
+	option = {
+		name = CAL_BIB_event.3.a
+	}
+}
+
+########################################################################################################
+########################################################################################################
+country_event = {
+	id = CAL_CEF.0 
+	title = CAL_CEF.0.t
+	desc = CAL_CEF.0.d
+	picture = GFX_report_event_CEF
+	is_triggered_only = yes
+
+	immediate = {}
+
+	option = {
+		trigger = {tag = CAL}
+		name = CAL_CEF.0.a
+		MEW = { country_event = { id = CAL_CEF.1 days = 1 } }
+		ai_chance = { factor = 10 }
+	}
+	option = {
+		trigger = {tag = CAL}
+		name = CAL_CEF.0.b
+		ai_chance = { factor = 0 }
+		MEW = { country_event = { id = CAL_CEF_DECLINE.1 days = 1 } }
+		unlock_national_focus = CAL_victory.1
+	}
+}
+
+country_event = { # THIS IS A MEWNI EVENT THEY WILL GET FOR CAL_CEF.0
+	id = CAL_CEF.1
+	title = CAL_CEF.1.t
+	desc = CAL_CEF.1.d
+	picture = GFX_report_event_CEF
+	is_triggered_only = yes
+
+	immediate = {}
+
+	option = {
+		name = CAL_CEF.1.a
+		set_country_flag = cali_aid_1
+		custom_effect_tooltip = CAL_CEF.1.tooltip_2
+		add_to_array = {
+			array = GLOBAL.mewni_dimension_countries
+			value = CAL.id
+		}
+		CAL = {
+			add_opinion_modifier = { target = MEW modifier = CAL_aid_from_california }
+			complete_national_focus = CAL_mewni.1
+		}
+		MEW = { add_opinion_modifier = { target = CAL modifier = MEW_aid_from_california } }
+		430 = {
+			add_core_of = CAL
+			remove_core_of = MEW
+			CAL = {
+				transfer_state = 430
+			}
+		}
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = CAL_CEF.1.b
+		ai_chance = { factor = 0 }
+		custom_effect_tooltip = CAL_CEF.1.tooltip
+		set_country_flag = cali_no_aid
+		set_global_flag = GLOBAL_cali_no_aid
+		CAL = { country_event = { id = CAL_CEF_DECLINE.1 days = 1 } }
+	}
+}
+
+country_event = {
+	id = CAL_CEF_DECLINE.1
+	title = CAL_CEF_DECLINE.1.t
+	desc = CAL_CEF_DECLINE.1.d
+	picture = GFX_report_event_CEF
+	is_triggered_only = yes
+
+	immediate = {}
+
+	option = {
+		name = CAL_CEF_DECLINE.1.a
+		ai_chance = { factor = 0 }
+		custom_effect_tooltip = CAL_CEF.1.tooltip
+		set_country_flag = cali_no_aid
+	}
+	
+	option = {
+		name = CAL_CEF_DECLINE.1.b
+		ai_chance = { factor = 100 }
+		MEW = { 
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 100
+				producer = CAL
+			} 
+		}
+		set_country_flag = cali_no_aid
+	}
+}
+
+country_event = {
+	id = CAL_CEF.2 
+	title = CAL_CEF.2.t
+	desc = CAL_CEF.2.d
+	picture = GFX_report_event_CEF
+	is_triggered_only = yes
+
+	immediate = {}
+
+	option = {
+		name = CAL_CEF.2.a
+		add_political_power = 150
+	}
+}
+
+########################################################################################################
+country_event = {  # For Focus CAL_magic.0
+	id = CAL_FRITZ.0 
+	title = CAL_FRITZ.0.t
+	desc = CAL_FRITZ.0.d
+	picture = GFX_report_event_CEF
+	is_triggered_only = yes
+
+	immediate = {}
+
+	option = {
+		name = CAL_FRITZ.1.a
+		add_political_power = -50
+	}
+}
+
+country_event = { # For Focus CAL_magic.3 # Dr. Frakes
+	id = CAL_FRITZ.1 
+	title = CAL_FRITZ.1.t
+	desc = CAL_FRITZ.1.d
+	picture = GFX_report_event_CEF
+	is_triggered_only = yes
+
+	immediate = {}
+
+	option = {
+		name = CAL_FRITZ.1.a
+		add_political_power = 50
+		add_stability = -0.10
+	}
+	option = {
+		name = CAL_FRITZ.1.b
+		add_political_power = -50
+		random_owned_controlled_state = { 
+			limit = { arms_factory > 0 }
+			remove_building = { type = arms_factory  level = 1 }				
+		} 
+		random_owned_controlled_state = { 
+			limit = { industrial_complex > 1 }
+			remove_building = { type = industrial_complex  level = 2 }				
+		}
+	}
+}
+
+country_event = { # For Focus CAL_magic.4 Steal Scissors
+	id = CAL_FRITZ.2 
+	title = CAL_FRITZ.2.t
+	desc = CAL_FRITZ.2.d
+	picture = GFX_report_event_CEF
+	is_triggered_only = yes
+
+	immediate = {}
+
+	option = {
+		name = CAL_FRITZ.2.a
+		add_political_power = -50
+		add_war_support = 0.05
+	}
+}
+
+country_event = { # For Focus CAL_magic.5 # Emily's transformation
+	id = CAL_FRITZ.3 
+	title = CAL_FRITZ.3.t
+	desc = CAL_FRITZ.3.d
+	picture = GFX_report_event_CEF
+	is_triggered_only = yes
+
+	immediate = {}
+
+	option = {
+		name = CAL_FRITZ.3.a
+		add_political_power = 150
+		country_event = CAL_FRITZ.4 
+	}
+}
+
+country_event = { # For Focus CAL_magic.5 # Emily's transformation part 2
+	id = CAL_FRITZ.4 
+	title = CAL_FRITZ.4.t
+	desc = CAL_FRITZ.4.d
+	picture = GFX_report_event_CEF
+	is_triggered_only = yes
+
+	immediate = {}
+
+	option = {
+		name = CAL_FRITZ.4.a
+		country_event = CAL_FRITZ.6 
+	}
+}
+
+country_event = { # For Focus CAL_magic.6 # Emily's transformation part 3
+	id = CAL_FRITZ.6 
+	title = CAL_FRITZ.6.t
+	desc = CAL_FRITZ.6.d
+	picture = GFX_report_event_CEF
+	is_triggered_only = yes
+
+	immediate = {}
+
+	option = {
+		name = CAL_FRITZ.6.a
+		add_political_power = 150
+	}
+}
+
+country_event = { # For Focus CAL_magic.6 # Borrow Star's wand
+	id = CAL_FRITZ.5 
+	title = CAL_FRITZ.5.t
+	desc = CAL_FRITZ.5.d
+	picture = GFX_report_event_CEF
+	is_triggered_only = yes
+
+	immediate = {}
+
+	option = {
+		name = CAL_FRITZ.5.a
+		add_political_power = 150
+	}
+}
+
+########################################################################################################
+
+country_event = {  # If Mewni REC fails to pay loan
+	id = CAL_NWB.1
+	title = CAL_NWB.1.t
+	desc = CAL_NWB.1.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_NWB.1.a
+		ai_chance = { factor = 0 }	# 0% AI choose this
+	}
+	option = { 
+		name = CAL_NWB.1.b
+		ai_chance = { factor = 100 }	# 100% AI choose this
+		MEW = { remove_ideas = MEW_northwest_pain }
+	}
+}
+
+
+
+country_event = {  #
+	id = CAL_TEST.1 
+	title = CAL_TEST.1.t
+	desc = CAL_TEST.1.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_TEST.1.a
+		ai_chance = { factor = 0 }	# 0% AI choose this
+	}
+	option = { 
+		name = CAL_TEST.1.b
+		ai_chance = { factor = 0 }	# 0% AI choose this
+	}
+	option = { 
+		name = CAL_TEST.1.c
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+#####################################################################################
+
+country_event = {
+	id = CAL_FORTHEEMPEROR.1
+	title = CAL_FORTHEEMPEROR.1.t
+	desc = CAL_FORTHEEMPEROR.1.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	
+	option = { 
+		name = CAL_FORTHEEMPEROR.1.a
+		
+		set_faction_name = "Imperial United States"
+		set_cosmetic_tag = IMP_WUS
+		set_country_flag = cal_California_United
+		#hidden_effect = {
+			every_other_country = {
+				limit = {
+					AND = {
+						is_in_faction_with = CAL
+						NOT = { TAG = MEX }
+					}
+				}
+				
+				hidden_effect = {
+					CAL = {
+						annex_country = {
+							target = PREV
+							transfer_troops = yes
+						}
+					}
+				}
+
+			}
+			hidden_effect = {country_event = ORE_fix_event.1}
+		#}
+		
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}

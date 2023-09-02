@@ -1,0 +1,656 @@
+﻿###########################
+# California story events 
+###########################
+
+add_namespace = CAL_TWOWORLDS
+add_namespace = CAL_JANNA
+add_namespace = CAL_GUSTAV
+add_namespace = CAL_Witcher_Event
+add_namespace = CAL_IPD
+add_namespace = CAL_CONTACT
+add_namespace = CAL_norton_mind_event
+
+############################################################################################################
+
+country_event = {
+	id = CAL_TWOWORLDS.1
+	title = CAL_TWOWORLDS.1.t
+	desc = CAL_TWOWORLDS.1.d
+	picture = GFX_report_event_empty
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_TWOWORLDS.1.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+############################################################################################################
+
+########################################################################################################
+
+country_event = {  # 
+	id = CAL_JANNA.1
+	title = CAL_JANNA.1.t
+	desc = CAL_JANNA.1.d 
+	picture = GFX_report_event_janna_marco_info
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_JANNA.1.a
+		ai_chance = { factor = 0 }	# 0% AI choose this
+	}
+}
+##########################################
+country_event = {  # NOT USED IN 0.2.0
+	id = CAL_JANNA.2
+	title = CAL_JANNA.2.t
+	desc = CAL_JANNA.2.d
+	picture = GFX_report_event_janna_marco_info
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_JANNA.2.a
+		ai_chance = { factor = 0 }	# 0% AI choose this
+		country_event = CAL_JANNA.3
+	}
+}
+##############
+country_event = {  # NOT USED IN 0.2.0
+	id = CAL_JANNA.3
+	title = CAL_JANNA.3.t
+	desc = CAL_JANNA.3.d
+	picture = GFX_report_event_janna_marco_info
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_JANNA.3.a
+		ai_chance = { factor = 0 }	# 0% AI choose this
+		country_event = CAL_JANNA.4
+	}
+}
+##############
+country_event = {  # NOT USED IN 0.2.0
+	id = CAL_JANNA.4
+	title = CAL_JANNA.4.t
+	desc = CAL_JANNA.4.d
+	picture = GFX_report_event_janna_marco_info
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_JANNA.4.a
+		ai_chance = { factor = 0 }	# 0% AI choose this
+	}
+}
+##########################################
+country_event = {  # NOT USED IN 0.2.0
+	id = CAL_JANNA.5
+	title = CAL_JANNA.5.t
+	desc = CAL_JANNA.5.d
+	picture = GFX_report_event_janna_marco_info
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_JANNA.3.a
+		ai_chance = { factor = 0 }	# 0% AI choose this
+		country_event = CAL_JANNA.6
+	}
+}
+##############
+country_event = {  # NOT USED IN 0.2.0
+	id = CAL_JANNA.6
+	title = CAL_JANNA.6.t
+	desc = CAL_JANNA.6.d
+	picture = GFX_report_event_janna_marco_info
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_JANNA.6.a
+		ai_chance = { factor = 0 }	# 0% AI choose this
+	}
+}
+##########################################
+
+
+country_event = {  # 
+	id = CAL_JANNA.11
+	title = CAL_JANNA.11.t
+	desc = CAL_JANNA.11.d
+	picture = GFX_report_event_janna_marco_info
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_JANNA.11.a
+		ai_chance = { factor = 0 }	# 0% AI choose this
+	}
+}
+
+########################################################################################################
+
+country_event = {  # 
+	id = CAL_GUSTAV.1
+	title = CAL_GUSTAV.1.t
+	desc = CAL_GUSTAV.1.d
+	picture = GFX_report_event_gustav
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_GUSTAV.1.a
+		country_event = { id = CAL_GUSTAV.2 days = 3}
+		ai_chance = { factor = 0 }	# 0% AI choose this
+	}
+}
+
+country_event = {  # 
+	id = CAL_GUSTAV.2
+	title = CAL_GUSTAV.2.t
+	desc = CAL_GUSTAV.2.d
+	picture = GFX_report_event_star_uninpressed
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_GUSTAV.2.a
+		country_event = { id = CAL_GUSTAV.3 days = 3}
+		ai_chance = { factor = 0 }	# 0% AI choose this
+	}
+}
+
+country_event = {  # 
+	id = CAL_GUSTAV.3
+	title = CAL_GUSTAV.3.t
+	desc = CAL_GUSTAV.3.d
+	picture = GFX_report_event_star_spying
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_GUSTAV.3.a # End of story line
+		ai_chance = { factor = 0 }	# 0% AI choose this
+		#country_event = { id = CAL_GUSTAV.7 days = 21}
+	}
+	option = { 
+		name = CAL_GUSTAV.3.b
+		ai_chance = { factor = 100 }	# 100% AI choose this
+		country_event = { id = CAL_GUSTAV.4 days = 7}
+	}
+}
+
+country_event = {  # 
+	id = CAL_GUSTAV.4
+	title = CAL_GUSTAV.4.t
+	desc = CAL_GUSTAV.4.d
+	picture = GFX_report_event_star_spying
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_GUSTAV.4.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+		country_event = { id = CAL_GUSTAV.5 days = 7}
+	}
+}
+
+country_event = {  # 
+	id = CAL_GUSTAV.5
+	title = CAL_GUSTAV.5.t
+	desc = CAL_GUSTAV.5.d
+	picture = GFX_report_event_bakersfieldville
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_GUSTAV.5.a  # Calls him out
+		ai_chance = { factor = 90 }	# 100% AI choose this
+		country_event = { id = CAL_GUSTAV.6 days = 7}
+		set_country_flag = cal_gustav_home # will make BKFV new capitol later on
+	}
+	option = { 
+		name = CAL_GUSTAV.5.b  # Goes with it
+		ai_chance = { factor = 10 }	# 100% AI choose this
+		country_event = { id = CAL_GUSTAV.7 days = 7}
+		set_country_flag = cal_gustav_echo # does nothing right now, I think
+	}
+}
+
+country_event = {  # Bakersfieldville known
+	id = CAL_GUSTAV.6
+	title = CAL_GUSTAV.6.t
+	desc = CAL_GUSTAV.6.d
+	picture = GFX_report_event_bakersfieldville_happy
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_GUSTAV.6.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+		add_political_power = -100
+		add_stability = 0.05
+	}
+}
+
+country_event = {  # Bakersfieldville ignored
+	id = CAL_GUSTAV.7
+	title = CAL_GUSTAV.7.t
+	desc = CAL_GUSTAV.7.d
+	picture = GFX_report_event_bakersfieldville
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_GUSTAV.7.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+		add_political_power = 100
+	}
+}
+
+country_event = {  # Bakersfieldville becomes the capital
+	id = CAL_GUSTAV.8
+	title = CAL_GUSTAV.8.t
+	desc = CAL_GUSTAV.8.d
+	picture = GFX_report_event_bakersfieldville_happy
+	
+	is_triggered_only = yes
+	#immediate = {}
+	
+	option = {  
+		name = CAL_GUSTAV.8.a
+		custom_effect_tooltip = CAL_GUSTAV.8.tt
+		add_political_power = -200
+		161 = { 
+			add_core_of = CAL
+			remove_core_of = SOC
+		}
+		transfer_state = 161
+		set_capital = {state = 161}
+		
+		add_to_variable = {
+			var = cal_norton_norcal
+			value = 50
+		}
+		###################
+		clamp_variable = {
+			var = cal_norton_norcal
+			min = 0
+			max = 100
+		}
+		add_to_variable = {
+			var = cal_norton_socal
+			value = 50
+		}
+		###################
+		clamp_variable = {
+			var = cal_norton_socal
+			min = 0
+			max = 100
+		}
+		###################
+		###################
+		###################
+		add_to_variable = {
+			var = cal_pIDR
+			value = -20
+		}
+		###################
+		clamp_variable = {
+			var = cal_pIDR
+			min = 0
+			max = 100
+		}
+		add_to_variable = {
+			var = cal_tIDR
+			value = -20
+		} 
+		###################
+		clamp_variable = {
+			var = cal_tIDR
+			min = 0
+			max = 100
+		}
+		add_to_variable = {
+			var = cal_hectorNDR
+			value = -20
+		}
+		###################
+		clamp_variable = {
+			var = cal_hectorNDR
+			min = 0
+			max = 100
+		}
+		
+		ai_chance = { factor = 100 }	# 100% AI choose this
+		
+	}
+}
+
+country_event = {  # Bakersfieldville forever ignored
+	id = CAL_GUSTAV.9
+	title = CAL_GUSTAV.9.t
+	desc = CAL_GUSTAV.9.d
+	picture = GFX_report_event_gustav
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_GUSTAV.9.a
+		custom_effect_tooltip = CAL_GUSTAV.9.tt
+		add_political_power = 200
+		161 = { 
+			add_core_of = MCA
+			remove_core_of = SOC
+		}
+		MCA = {
+			transfer_state = 161
+		}
+		puppet = MCA
+		add_to_variable = {
+			var = cal_pIDR
+			value = 20
+		}
+		###################
+		clamp_variable = {
+			var = cal_pIDR
+			min = 0
+			max = 100
+		}
+		add_to_variable = {
+			var = cal_tIDR
+			value = 20
+		}
+		###################
+		clamp_variable = {
+			var = cal_tIDR
+			min = 0
+			max = 100
+		}
+		add_to_variable = {
+			var = cal_hectorNDR
+			value = 20
+		}
+		###################
+		clamp_variable = {
+			var = cal_hectorNDR
+			min = 0
+			max = 100
+		}
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+########################################################################################################
+
+country_event = { # Is DEFUNCT
+	id = CAL_IPD.1
+	title = CAL_IPD.1.t
+	desc = CAL_IPD.1.d
+	
+	picture = GFX_report_event_empty
+
+	is_triggered_only = yes
+
+
+	immediate = {
+		create_intelligence_agency = yes
+		upgrade_intelligence_agency = upgrade_form_department
+		load_oob = "CAL_2012"
+		SOC = {load_oob = "SOC_2012"}
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+
+	option = {
+		name = CAL_IPD.1.a
+	}
+}
+
+########################################################################################################
+############################################################################################################
+
+country_event = {
+	id = CAL_Witcher_Event.1
+	title = CAL_Witcher_Event.1.t
+	desc = CAL_Witcher_Event.1.d
+	picture = GFX_report_event_pol_lit
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_Witcher_Event.1.a
+		country_event = { id = CAL_Witcher_Event.2 days = 10}
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+country_event = {
+	id = CAL_Witcher_Event.2
+	title = CAL_Witcher_Event.2.t
+	desc = CAL_Witcher_Event.2.d
+	picture = GFX_report_event_witcher
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_Witcher_Event.2.a
+		add_political_power = -100
+		ai_chance = { factor = 5 }	# 100% AI choose this
+	}
+	option = { 
+		name = CAL_Witcher_Event.2.b
+		add_stability = -0.02
+		ai_chance = { factor = 5 }	# 100% AI choose this
+	}
+	option = { 
+		name = CAL_Witcher_Event.2.c
+		add_political_power = 100
+		country_event = { id = CAL_Witcher_Event.3 days = 10}
+		ai_chance = { factor = 90 }	# 100% AI choose this
+	}
+}
+
+country_event = {
+	id = CAL_Witcher_Event.3
+	title = CAL_Witcher_Event.3.t
+	desc = CAL_Witcher_Event.3.d
+	picture = GFX_report_event_witcher
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_Witcher_Event.3.a
+		country_event = { id = CAL_Witcher_Event.4 days = 5}
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+country_event = {
+	id = CAL_Witcher_Event.4
+	title = CAL_Witcher_Event.4.t
+	desc = CAL_Witcher_Event.4.d
+	picture = GFX_report_event_witcher
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_Witcher_Event.4.a
+		country_event = CAL_Witcher_Event.5
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+country_event = {
+	id = CAL_Witcher_Event.5
+	title = CAL_Witcher_Event.5.t
+	desc = CAL_Witcher_Event.5.d
+	picture = GFX_report_event_witcher
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_Witcher_Event.5.a
+		country_event = CAL_Witcher_Event.6
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+country_event = {
+	id = CAL_Witcher_Event.6
+	title = CAL_Witcher_Event.6.t
+	desc = CAL_Witcher_Event.6.d
+	picture = GFX_report_event_witcher
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_Witcher_Event.6.a
+		add_political_power = 100
+		MEW = { add_stability = 0.05 } 
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+############################################################################################################
+############################################################################################################
+
+country_event = {  # Star Meets Norton
+	id = CAL_CONTACT.1
+	title = CAL_CONTACT.1.t
+	desc = CAL_CONTACT.1.d
+	picture = GFX_report_event_CEF
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_CONTACT.1.a
+		country_event = { id = CAL_CONTACT.2 days = 5}
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+country_event = { # Star barges in and offers a meeting
+	id = CAL_CONTACT.2
+	title = CAL_CONTACT.2.t
+	desc = CAL_CONTACT.2.d
+	picture = GFX_report_event_CEF
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_CONTACT.2.a
+		country_event = { id = CAL_CONTACT.3 days = 5}
+		#country_event = { id = .3 days = 5} # Mewni version
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+country_event = { # California getting read, MEWNI will have its own version
+	id = CAL_CONTACT.3
+	title = CAL_CONTACT.3.t
+	desc = CAL_CONTACT.3.d
+	picture = GFX_report_event_CEF
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_CONTACT.3.a
+		country_event = { id = CAL_CONTACT.4 days = 5}
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+country_event = { # THIS IS A SHARED EVENT for CAL and MEW
+	id = CAL_CONTACT.4 
+	title = CAL_CONTACT.4.t
+	desc = CAL_CONTACT.4.d
+	picture = GFX_report_event_CEF
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_CONTACT.4.a
+		CAL = {country_event = { id = CAL_CONTACT.5 days = 5}}
+		add_political_power = 100
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+country_event = {  # Hector and Shermie
+	id = CAL_CONTACT.5
+	title = CAL_CONTACT.5.t
+	desc = CAL_CONTACT.5.d
+	picture = GFX_report_event_CEF
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_CONTACT.5.a
+		CAL = {country_event = { id = CAL_CONTACT.6 days = 5}}
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+country_event = {  # Hector and Shermie
+	id = CAL_CONTACT.6
+	title = CAL_CONTACT.6.t
+	desc = CAL_CONTACT.6.d
+	picture = GFX_report_event_CEF
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_CONTACT.6.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+############################################################################################################
+
+country_event = {
+	id = CAL_norton_mind_event.1
+	title = CAL_norton_mind_event.1.t
+	desc = CAL_norton_mind_event.1.d
+	picture = GFX_report_event_solaria_legacy
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_norton_mind_event.1.a
+		###country_event = CAL_norton_mind_event.2
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+country_event = {
+	id = CAL_norton_mind_event.2
+	title = CAL_norton_mind_event.2.t
+	desc = CAL_norton_mind_event.2.d
+	picture = GFX_report_event_solaria_legacy
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_norton_mind_event.2.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}
+
+country_event = {
+	id = CAL_norton_mind_event.3
+	title = CAL_norton_mind_event.3.t
+	desc = CAL_norton_mind_event.3.d
+	picture = GFX_report_event_solaria_legacy
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = CAL_norton_mind_event.3.a
+		ai_chance = { factor = 100 }	# 100% AI choose this
+	}
+}

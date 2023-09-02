@@ -1,0 +1,13 @@
+### Advisors for MEW ###
+spriteTypes = {
+
+	spriteType = {
+			name = "GFX_idea_advisor_porge"
+			texturefile = "gfx/interface/advisors/PUI/PUI_Porge.dds"
+		}
+	spriteType = {
+			name = "GFX_idea_PUI_parlos"
+			texturefile = "gfx/interface/advisors/PUI/Parlos.dds"
+		}
+	
+}

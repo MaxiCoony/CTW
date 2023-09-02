@@ -1,0 +1,152 @@
+﻿add_namespace = GLOBAL_NEWS_PRIDE_EARTH
+add_namespace = GLOBAL_NEWS_PRIDE_MEWNI
+add_namespace = GLOBAL_NEWS_PRIDE_AMPHI
+add_namespace = GLOBAL_NEWS_PRIDE_BOILI
+add_namespace = GLOBAL_NEWS_PRIDE_TRIGGER
+
+news_event = {
+	id = GLOBAL_NEWS_PRIDE_TRIGGER.1
+	
+	major = no
+	is_triggered_only = yes
+	hidden = yes
+	timeout_days = 1
+	
+	immediate = {
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = GLOBAL.earth_dimension_countries
+					value = THIS.id
+				}
+			}
+			news_event = GLOBAL_NEWS_PRIDE_EARTH.1
+		}
+		every_country = {
+			limit = {
+				is_in_array = {
+					array = GLOBAL.mewni_dimension_countries
+					value = THIS.id
+				}
+			}
+			news_event = GLOBAL_NEWS_PRIDE_MEWNI.1
+		}
+		AMP = { news_event = GLOBAL_NEWS_PRIDE_AMPHI.1 }
+		BOI = { news_event = GLOBAL_NEWS_PRIDE_BOILI.1 }
+		IF = {
+			limit = {  NOT = { has_global_flag = GLOBAL_FLAG_pride_month_flag }  }
+			set_global_flag = GLOBAL_FLAG_pride_month_flag
+			news_event = { id = GLOBAL_NEWS_PRIDE_TRIGGER.1 days = 365}
+		}
+	}
+	
+	option = {
+	}
+}
+
+news_event = {
+	id = GLOBAL_NEWS_PRIDE_EARTH.1
+	title = GLOBAL_NEWS_PRIDE_EARTH.1.t
+	desc = GLOBAL_NEWS_PRIDE_EARTH.1.d
+	
+	picture = GFX_news_event_pride_earth
+	
+	major = no
+	is_triggered_only = yes
+	timeout_days = 7
+	
+	immediate = {}
+	
+	option = {
+		name = GLOBAL_NEWS_PRIDE_EARTH.1.a
+		trigger = { NOT = { has_global_flag = GLOBAL_FLAG_pride_month_flag } }
+		add_political_power = 100
+	}
+	option = {
+		name = GLOBAL_NEWS_PRIDE_EARTH.1.b
+		trigger = {  has_global_flag = GLOBAL_FLAG_pride_month_flag  }
+		add_political_power = 100
+	}
+}
+
+news_event = {
+	id = GLOBAL_NEWS_PRIDE_MEWNI.1
+	title = GLOBAL_NEWS_PRIDE_MEWNI.1.t
+	desc = {
+		trigger = { NOT = { has_global_flag = GLOBAL_FLAG_pride_month_flag }  }
+		text = GLOBAL_NEWS_PRIDE_MEWNI.1.d
+	}
+	desc = {
+		trigger = { has_global_flag = GLOBAL_FLAG_pride_month_flag  }
+		text = GLOBAL_NEWS_PRIDE_MEWNI.1.da
+	}
+	
+	picture = GFX_news_event_pride_mewni
+	
+	major = no
+	is_triggered_only = yes
+	timeout_days = 7
+	
+	immediate = {}
+	
+	option = {
+		name = GLOBAL_NEWS_PRIDE_MEWNI.1.a
+		trigger = { NOT = { has_global_flag = GLOBAL_FLAG_pride_month_flag } }
+		add_political_power = 100
+	}
+	option = {
+		name = GLOBAL_NEWS_PRIDE_MEWNI.1.b
+		trigger = {  has_global_flag = GLOBAL_FLAG_pride_month_flag  }
+		add_political_power = 100
+	}
+}
+
+news_event = {
+	id = GLOBAL_NEWS_PRIDE_AMPHI.1
+	title = GLOBAL_NEWS_PRIDE_AMPHI.1.t
+	desc = GLOBAL_NEWS_PRIDE_AMPHI.1.d
+	
+	picture = GFX_report_event_empty
+	
+	major = no
+	is_triggered_only = yes
+	timeout_days = 7
+	
+	immediate = {}
+	
+	option = {
+		name = GLOBAL_NEWS_PRIDE_AMPHI.1.a
+		trigger = { NOT = { has_global_flag = GLOBAL_FLAG_pride_month_flag } }
+		add_political_power = 100
+	}
+	option = {
+		name = GLOBAL_NEWS_PRIDE_AMPHI.1.b
+		trigger = {  has_global_flag = GLOBAL_FLAG_pride_month_flag  }
+		add_political_power = 100
+	}
+}
+
+news_event = {
+	id = GLOBAL_NEWS_PRIDE_BOILI.1
+	title = GLOBAL_NEWS_PRIDE_BOILI.1.t
+	desc = GLOBAL_NEWS_PRIDE_BOILI.1.d
+	
+	picture = GFX_report_event_empty
+	
+	major = no
+	is_triggered_only = yes
+	timeout_days = 7
+	
+	immediate = {}
+	
+	option = {
+		name = GLOBAL_NEWS_PRIDE_BOILI.1.a
+		trigger = { NOT = { has_global_flag = GLOBAL_FLAG_pride_month_flag } }
+		add_political_power = 100
+	}
+	option = {
+		name = GLOBAL_NEWS_PRIDE_BOILI.1.b
+		trigger = {  has_global_flag = GLOBAL_FLAG_pride_month_flag  }
+		add_political_power = 100
+	}
+}

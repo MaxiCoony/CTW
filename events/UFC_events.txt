@@ -1,0 +1,683 @@
+﻿add_namespace = UFC_START_EVENT
+add_namespace = UFC_MANWAR 
+add_namespace = UFC_COUNCIL
+add_namespace = UFC_BETRAYAL
+add_namespace = UFC_COUNCIL_NEWS
+add_namespace = UFC_RAVANCHISM
+add_namespace = UFC_REVOULTION
+add_namespace = UFC_MANO_FATE
+add_namespace = UFC_GNOME_FATE
+
+country_event = {
+	id = UFC_START_EVENT.1
+	title = UFC_START_EVENT.1.t
+	desc = UFC_START_EVENT.1.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_START_EVENT.1.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+############################################
+
+country_event = { # Ask the Mayor
+	id = UFC_MANWAR.1
+	title = UFC_MANWAR.1.t
+	desc = UFC_MANWAR.1.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_MANWAR.1.a
+		add_equipment_to_stockpile = {
+			type = mod_infantry_equipment_3
+			amount = 1000
+			producer = GEU
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 2000
+			producer = GEU
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+
+############################################
+
+country_event = { # Ask Unicorns
+	id = UFC_COUNCIL.1
+	title = UFC_COUNCIL.1.t
+	desc = UFC_COUNCIL.1.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_COUNCIL.1.a
+		ai_chance = { factor = 100 }
+		UNI = {country_event = { id = UFC_COUNCIL.2 days = 10}}
+	}
+}
+
+country_event = { # Unicrons Respond
+	id = UFC_COUNCIL.2
+	title = UFC_COUNCIL.2.t
+	desc = UFC_COUNCIL.2.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_COUNCIL.2.a # YES
+		UFC = {country_event = { id = UFC_COUNCIL.3 days = 5}}
+		set_global_flag = GLOBAL_UNI_COUNCIL_FLAG
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = UFC_COUNCIL.2.b # For now, yes
+		UFC = {country_event = { id = UFC_COUNCIL.3 days = 5}}
+		set_global_flag = GLOBAL_UNI_COUNCIL_FLAG
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = UFC_COUNCIL.2.c # LOL, NO!
+		UFC = {country_event = { id = UFC_COUNCIL.4 days = 5}}
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # They said yes
+	id = UFC_COUNCIL.3
+	title = UFC_COUNCIL.3.t
+	desc = UFC_COUNCIL.3.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_COUNCIL.3.a
+		add_political_power = 100
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # They said no
+	id = UFC_COUNCIL.4
+	title = UFC_COUNCIL.4.t
+	desc = UFC_COUNCIL.4.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_COUNCIL.4.a
+		add_war_support = 0.10
+		add_command_power = 50
+		ai_chance = { factor = 100 }
+	}
+}
+
+##############################################
+
+country_event = { # The Unicorns want more reps
+	id = UFC_COUNCIL.5
+	title = UFC_COUNCIL.5.t
+	desc = UFC_COUNCIL.5.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_COUNCIL.5.a
+		add_political_power = 200
+		custom_effect_tooltip = "UFC_COUNCIL.5.at"
+		add_to_variable = {
+			var = ROOT.FOREST_crawl_cash
+			value = 100
+		}
+		ai_chance = { factor = 100 }
+	}	
+	option = {
+		name = UFC_COUNCIL.5.b
+		add_stability = 0.05
+		add_political_power = -100
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # The Unicorns Protest
+	id = UFC_COUNCIL.6
+	title = UFC_COUNCIL.6.t
+	desc = UFC_COUNCIL.6.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_COUNCIL.6.a
+		add_political_power = -100
+		add_stability = 0.10
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = UFC_COUNCIL.6.b
+		add_political_power = 200
+		add_stability = -0.05
+		custom_effect_tooltip = "UFC_COUNCIL.6.bt"
+		add_to_variable = {
+			var = ROOT.FOREST_crawl_cash
+			value = 200
+		}
+		ai_chance = { factor = 100 }
+	}	
+}
+
+country_event = { # The Prime Minstership
+	id = UFC_COUNCIL.7
+	title = UFC_COUNCIL.7.t
+	desc = UFC_COUNCIL.7.d
+	picture = GFX_report_event_unicorns
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_COUNCIL.7.a
+		set_global_flag = GLOBAL_UFC_BEAR_FLAG
+		set_country_flag = UFC_FLAG_BEAR
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = UFC_COUNCIL.7.b
+		custom_effect_tooltip = "UFC_COUNCIL.7.bt"
+		set_global_flag = GLOBAL_UFC_UNI_FLAG
+		set_country_flag = UFC_FLAG_UNI
+		
+		add_to_variable = {
+			var = ROOT.FOREST_crawl_cash
+			value = 500
+		}
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = UFC_COUNCIL.7.c
+		set_global_flag = GLOBAL_UFC_DUAL_FLAG
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # The Prime Minstership
+	id = UFC_COUNCIL.8
+	title = UFC_COUNCIL.8.t
+	desc = UFC_COUNCIL.8.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes hidden = yes
+	
+	immediate = {retire_ideology_leader = communism }
+	option = {}
+}
+
+news_event = { # 
+	id = UFC_COUNCIL_NEWS.1
+	title = UFC_COUNCIL_NEWS.1.t
+	desc = UFC_COUNCIL_NEWS.1.d
+	
+	
+	major = no 
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+	
+		}
+	}	
+	option = {
+		name = UFC_COUNCIL_NEWS.1.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+news_event = { # 
+	id = UFC_COUNCIL_NEWS.2
+	title = UFC_COUNCIL_NEWS.2.t
+	desc = UFC_COUNCIL_NEWS.2.d
+	
+	
+	major = no 
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+	
+		}
+	}	
+	option = {
+		name = UFC_COUNCIL_NEWS.2.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+news_event = { # 
+	id = UFC_COUNCIL_NEWS.3
+	title = UFC_COUNCIL_NEWS.3.t
+	desc = UFC_COUNCIL_NEWS.3.d
+	
+	
+	major = no 
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+	
+		}
+	}	
+	option = {
+		name = UFC_COUNCIL_NEWS.3.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+############################################
+
+country_event = { # Steal Their Money, Unicorn POV
+	id = UFC_BETRAYAL.1
+	title = UFC_BETRAYAL.1.t
+	desc = UFC_BETRAYAL.1.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_BETRAYAL.1.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+############################################
+############################################
+############################################
+# Revanchism and Revolutiponar events
+############################################
+
+country_event = { # Gnome Furher takes control
+	id = UFC_RAVANCHISM.1
+	title = UFC_RAVANCHISM.1.t
+	desc = UFC_RAVANCHISM.1.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_RAVANCHISM.1.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # The Upper head is upper no more
+	id = UFC_REVOULTION.1
+	title = UFC_REVOULTION.1.t
+	desc = UFC_REVOULTION.1.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_REVOULTION.1.a
+		ai_chance = { factor = 100 } 
+	}
+}
+
+############################################
+# MANO FATE events
+############################################
+
+country_event = { # We Will Be Avenged!  (Auth/Com Bears vs ALL MAN) (NEUT/DEMO Bears vs AUTH MAN)
+	id = UFC_MANO_FATE.1
+	title = UFC_MANO_FATE.1.t
+	desc = UFC_MANO_FATE.1.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_MANO_FATE.1.a
+		create_wargoal = {  type = annex_everything target = MAN}
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { 
+	id = UFC_MANO_FATE.2
+	title = UFC_MANO_FATE.2.t
+	desc = UFC_MANO_FATE.2.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_MANO_FATE.2.a
+		country_event = { id = UFC_MANO_FATE.5 days = 10  }
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { 
+	id = UFC_MANO_FATE.3
+	title = UFC_MANO_FATE.3.t
+	desc = UFC_MANO_FATE.3.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_MANO_FATE.3.a
+		country_event = { id = UFC_MANO_FATE.4 days = 10  }
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # A new peace on the river trembley (NEUT Bears vs NEUT/DEMO MAN) (DEMO Bears vs NEUT MAN)
+	id = UFC_MANO_FATE.4
+	title = UFC_MANO_FATE.4.t
+	desc = UFC_MANO_FATE.4.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_MANO_FATE.4.a
+		diplomatic_relation = {
+			country = MAN
+			relation = non_aggression_pact
+			active = YES
+		}
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = UFC_MANO_FATE.4.b
+		UFC = {create_wargoal = {  type = annex_everything target = MAN}}
+		MAN = {create_wargoal = {  type = annex_everything target = UFC}}
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # Reappochment ((DEMO Bears vs DEMO MAN)) 
+	id = UFC_MANO_FATE.5
+	title = UFC_MANO_FATE.5.t
+	desc = UFC_MANO_FATE.5.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_MANO_FATE.5.a
+		UFC = { add_to_faction = MAN }
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = UFC_MANO_FATE.5.b
+		UFC = {create_wargoal = {  type = annex_everything target = MAN}}
+		MAN = {create_wargoal = {  type = annex_everything target = UFC}}
+		ai_chance = { factor = 100 }
+	}
+}
+
+
+
+############################################
+# Gnomes events
+############################################
+
+country_event = { # Chief vs Jeff or New Queen
+	id = UFC_GNOME_FATE.1
+	title = UFC_GNOME_FATE.1.t
+	desc = UFC_GNOME_FATE.1.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_GNOME_FATE.1.a
+		GNM = {country_event = { id = UFC_GNOME_FATE.5 days = 5 }}
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # Force revoluitiopn 
+	id = UFC_GNOME_FATE.2
+	title = UFC_GNOME_FATE.2.t
+	desc = UFC_GNOME_FATE.2.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_GNOME_FATE.2.a
+		GNM = {country_event = { id = UFC_GNOME_FATE.5 days = 5 }}
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # The Forest Realm
+	id = UFC_GNOME_FATE.3
+	title = UFC_GNOME_FATE.3.t
+	desc = UFC_GNOME_FATE.3.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = { # join action
+		name = UFC_GNOME_FATE.3.a
+		GNM = {country_event = { id = UFC_GNOME_FATE.12 days = 5 }}
+		ai_chance = { factor = 100 }
+	}
+	option = { # ignore
+		name = UFC_GNOME_FATE.3.b
+		add_political_power = 1000
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # The Forest Council
+	id = UFC_GNOME_FATE.4
+	title = UFC_GNOME_FATE.4.t
+	desc = UFC_GNOME_FATE.4.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = { # be liberated!
+		name = UFC_GNOME_FATE.4.a
+		GNM = {country_event = { id = UFC_GNOME_FATE.9 days = 5 }}
+		ai_chance = { factor = 100 }
+	}
+}
+            ##########
+country_event = { # Gnome respond here to being annex
+	id = UFC_GNOME_FATE.5
+	title = UFC_GNOME_FATE.5.t
+	desc = UFC_GNOME_FATE.5.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_GNOME_FATE.5.a
+		UFC = {country_event = { id = UFC_GNOME_FATE.6 days = 5 }}
+		ai_chance = { factor = 50 }
+	}
+	option = {
+		name = UFC_GNOME_FATE.5.b
+		UFC = {country_event = { id = UFC_GNOME_FATE.7 days = 5 }}
+		ai_chance = { factor = 50 }
+	}
+}
+
+country_event = { # They accpet
+	id = UFC_GNOME_FATE.6
+	title = UFC_GNOME_FATE.6.t
+	desc = UFC_GNOME_FATE.6.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_GNOME_FATE.6.a
+		annex_country = {
+			target = GNM
+			transfer_troops = yes
+		}
+		ai_chance = { factor = 50 }
+	}
+}
+
+country_event = { # They refuse
+	id = UFC_GNOME_FATE.7
+	title = UFC_GNOME_FATE.7.t
+	desc = UFC_GNOME_FATE.7.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_GNOME_FATE.7.a
+		declare_war_on = {
+			target = GNM
+			type = annex_everything
+		}
+		ai_chance = { factor = 50 }
+	}
+
+}
+          ##########
+country_event = { # Gnome respond here to being made to join
+	id = UFC_GNOME_FATE.12
+	title = UFC_GNOME_FATE.12.t
+	desc = UFC_GNOME_FATE.12.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_GNOME_FATE.12.a
+		UFC = {country_event = { id = UFC_GNOME_FATE.13 days = 5 }}
+		ai_chance = { factor = 50 }
+	}
+	option = {
+		name = UFC_GNOME_FATE.12.b
+		UFC = {country_event = { id = UFC_GNOME_FATE.14 days = 5 }}
+		ai_chance = { factor = 50 }
+	}
+}
+
+country_event = { # They accpet
+	id = UFC_GNOME_FATE.13
+	title = UFC_GNOME_FATE.13.t
+	desc = UFC_GNOME_FATE.13.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_GNOME_FATE.13.a
+		UFC = { add_to_faction = MAN }
+		ai_chance = { factor = 50 }
+	}
+}
+
+country_event = { # They refuse
+	id = UFC_GNOME_FATE.14
+	title = UFC_GNOME_FATE.14.t
+	desc = UFC_GNOME_FATE.14.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_GNOME_FATE.14.a
+		create_wargoal = {
+			type = annex_everything
+			target = GNM
+		}
+		ai_chance = { factor = 50 }
+	}
+	option = {
+		name = UFC_GNOME_FATE.14.b
+		add_political_power = 500
+		ai_chance = { factor = 50 }
+	}
+}
+
+
+          ##########
+country_event = { # Gnome respond here to being liberated
+	id = UFC_GNOME_FATE.9
+	title = UFC_GNOME_FATE.9.t
+	desc = UFC_GNOME_FATE.9.d
+	picture = GFX_report_event_multibear
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_GNOME_FATE.9.a
+		UFC = {country_event = { id = UFC_GNOME_FATE.10 days = 5 }}
+		ai_chance = { factor = 50 }
+	}
+	option = {
+		name = UFC_GNOME_FATE.9.b
+		UFC = {country_event = { id = UFC_GNOME_FATE.11 days = 5 }}
+		ai_chance = { factor = 50 }
+	}
+}
+
+country_event = { # They accpet
+	id = UFC_GNOME_FATE.10
+	title = UFC_GNOME_FATE.10.t
+	desc = UFC_GNOME_FATE.10.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_GNOME_FATE.10.a
+		annex_country = {
+			target = GNM
+			transfer_troops = yes
+		}
+		ai_chance = { factor = 50 }
+	}
+}
+
+country_event = { # They refuse
+	id = UFC_GNOME_FATE.11
+	title = UFC_GNOME_FATE.11.t
+	desc = UFC_GNOME_FATE.11.d
+	picture = GFX_report_event_gnomes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = UFC_GNOME_FATE.11.a
+		declare_war_on = {
+			target = GNM
+			type = annex_everything
+		}
+		ai_chance = { factor = 50 }
+	}
+	option = {
+		name = UFC_GNOME_FATE.11.b
+		create_wargoal = {
+			type = annex_everything
+			target = GNM
+		}
+		ai_chance = { factor = 50 }
+	}
+
+}
+
